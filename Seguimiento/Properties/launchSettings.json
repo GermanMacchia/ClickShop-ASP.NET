@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:55086",
-      "sslPort": 44382
+      "applicationUrl": "http://localhost:37105",
+      "sslPort": 44355
     }
   },
   "profiles": {
@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ClickShop": {
+    "Seguimiento": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

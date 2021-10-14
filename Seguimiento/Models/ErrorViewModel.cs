@@ -1,6 +1,6 @@
 using System;
 
-namespace ClickShop.Models
+namespace Seguimiento.Models
 {
     public class ErrorViewModel
     {

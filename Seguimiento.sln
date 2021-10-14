@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClickShop", "ClickShop\ClickShop.csproj", "{30A7227A-6291-47FE-BCCD-EBC863679F8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguimiento", "Seguimiento\Seguimiento.csproj", "{10BF0B7A-257D-4A45-A6B1-8A548E803D14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30A7227A-6291-47FE-BCCD-EBC863679F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30A7227A-6291-47FE-BCCD-EBC863679F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30A7227A-6291-47FE-BCCD-EBC863679F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30A7227A-6291-47FE-BCCD-EBC863679F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BF0B7A-257D-4A45-A6B1-8A548E803D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BF0B7A-257D-4A45-A6B1-8A548E803D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BF0B7A-257D-4A45-A6B1-8A548E803D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BF0B7A-257D-4A45-A6B1-8A548E803D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {06A94D69-8122-44A1-8A47-6C50200CD5B6}
+		SolutionGuid = {B9BEED8C-F29C-49A2-A9B4-DDD494F06981}
 	EndGlobalSection
 EndGlobal
