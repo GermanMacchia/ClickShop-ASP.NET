@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +8,15 @@ namespace Seguimiento.Models
 {
     public class Direccion
     {
-        private string provicia { get; set;}
+        [Key]
+        public int id { get; set; }
 
-        private string calle { get; set; }
-        
-        private int numero { get; set; }
+        public string provicia { get; set;}
 
-        private string localidad { get; set; }
+        public string calle { get; set; }
+
+        public int numero { get; set; }
+
+        public string localidad { get; set; }
     }
 }

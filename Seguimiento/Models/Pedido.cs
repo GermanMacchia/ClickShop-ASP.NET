@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,23 +8,24 @@ namespace Seguimiento.Models
 {
     public class Pedido
     {
-        private Cliente cliente  {get; set;}
+        public Cliente cliente  {get; set;}
 
-        private String nroTraking {get; set;}
+        [Key]
+        public int nroTraking {get; set;}
 
-        private String comentarios { get; set;}
+        public string comentarios { get; set;}
 
-        private DateTime fechaEnvio { get; set;}
+        public DateTime fechaEnvio { get; set;}
 
-        private DateTime fechaInicio { get; set;}
+        public DateTime fechaInicio { get; set;}
 
-        private Empleado encargado { get; set;}
+        public Empleado encargado { get; set;}
 
-        private List<Producto> productos { get; set;}
+        public List<Producto> productos { get; set;}
 
-        private Direccion direccion { get; set;}
+        public Direccion direccion { get; set;}
 
-        private Estado estado { get; set; }
+        public Estado estado { get; set; }
 
     }
 }
