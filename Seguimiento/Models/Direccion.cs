@@ -18,5 +18,6 @@ namespace Seguimiento.Models
         public int numero { get; set; }
 
         public string localidad { get; set; }
+
     }
 }

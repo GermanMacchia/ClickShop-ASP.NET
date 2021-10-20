@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -23,7 +22,7 @@ namespace Seguimiento.Models
         //¿Donde esta DB? ¿Como se llama? ¿Que nivel de seguridad?
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer("Data Source = PC-DESKTOP; Initial Catalog = ClickShop; Integrated Security = true");
+            optionBuilder.UseSqlServer("Data Source = PC-DESKTOP;" + "Initial Catalog = ClickShop;" + "Integrated Security = true");
         }
 
     }

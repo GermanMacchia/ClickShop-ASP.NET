@@ -8,8 +8,10 @@ namespace Seguimiento.Models
 {
     public class Empleado
     {
+        [Required]
         public string nombre { get; set; }
 
+        [Required]
         public string apellido { get; set; }
 
         [Key]

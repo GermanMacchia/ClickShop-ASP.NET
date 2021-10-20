@@ -17,14 +17,18 @@ namespace Seguimiento.Models
 
         public DateTime fechaEnvio { get; set;}
 
+        [Required]
         public DateTime fechaInicio { get; set;}
 
+        [Required]
         public Empleado encargado { get; set;}
 
+        [Required]
         public List<Producto> productos { get; set;}
 
         public Direccion direccion { get; set;}
 
+        [Required]
         public Estado estado { get; set; }
 
     }
