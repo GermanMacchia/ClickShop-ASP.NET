@@ -1,0 +1,42 @@
+﻿@model Seguimiento.Models.Direccion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Direccion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.provicia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.provicia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.calle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.calle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.numero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.numero)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.localidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.localidad)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
