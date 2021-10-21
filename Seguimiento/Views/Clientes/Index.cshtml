@@ -4,26 +4,27 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Clientes</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a  style="color:cornflowerblue;" asp-action="Create">Crear Nuevo Cliente</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.telefono)
+                @Html.DisplayNameFor(model => model.nombre).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.mail)
+                @Html.DisplayNameFor(model => model.apellido).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                @Html.DisplayNameFor(model => model.telefono).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.apellido)
+                @Html.DisplayNameFor(model => model.mail).ToUpper()
             </th>
+
             <th></th>
         </tr>
     </thead>
@@ -31,21 +32,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mail)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.apellido)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.dni">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.dni">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.dni">Delete</a>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+
+            <td>
+                <a style="color:cornflowerblue;" asp-action="Edit" asp-route-id="@item.dni">Editar</a> |
+                <a style="color:cornflowerblue;" asp-action="Details" asp-route-id="@item.dni">Detalles</a> |
+                <a style="color:cornflowerblue;" asp-action="Delete" asp-route-id="@item.dni">Borrar</a>
             </td>
         </tr>
 }

@@ -4,28 +4,28 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Producto</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a style="color:cornflowerblue;" asp-action="Create">Crear Nuevo Producto</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                @Html.DisplayNameFor(model => model.nombre).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.precio)
+                @Html.DisplayNameFor(model => model.precio).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cantidad)
+                @Html.DisplayNameFor(model => model.cantidad).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.talle)
+                @Html.DisplayNameFor(model => model.talle).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.imagen)
+                @Html.DisplayNameFor(model => model.imagen).ToUpper()
             </th>
             <th></th>
         </tr>
@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.imagen)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a style="color:cornflowerblue;" asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a style="color:cornflowerblue;" asp-action="Details" asp-route-id="@item.id">Detalles</a> |
+                <a style="color:cornflowerblue;" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
             </td>
         </tr>
 }
