@@ -18,5 +18,7 @@ namespace Seguimiento.Models
         public int cantidad { get; set; }
 
         public int talle { get; set; }
+
+        public string imagen { get; set; }
     }
 }

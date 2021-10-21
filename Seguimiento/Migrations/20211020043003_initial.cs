@@ -13,7 +13,7 @@ namespace Seguimiento.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    provicia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    provincia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     numero = table.Column<int>(type: "int", nullable: false),
                     localidad = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -107,6 +107,7 @@ namespace Seguimiento.Migrations
                     precio = table.Column<double>(type: "float", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     talle = table.Column<int>(type: "int", nullable: false),
+                    imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PedidonroTraking = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

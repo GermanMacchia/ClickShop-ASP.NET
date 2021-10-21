@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Ingreso de Productos</h1>
+<br />
+<form>
+    @* ID PRODUCTO*@
+    <div class="form-group row">
+        <label for="idProducto" class="col-sm-2 col-form-label">ID</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="idProducto" placeholder="ID" />
+        </div>
+    </div>
+    @* NOMBRE PRODUCTO*@
+    <div class="form-group row">
+        <label for="nombreProducto" class="col-sm-2 col-form-label">NOMBRE</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombreProducto" placeholder="Nombre" />
+        </div>
+    </div>
+    @* PRECIO PRODUCTO*@
+    <div class="form-group row">
+        <label for="precioProducto" class="col-sm-2 col-form-label">PRECIO</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="precioProducto" placeholder="Precio" />
+        </div>
+    </div>
+    @* TALLE PRODUCTO*@
+    <div class="form-group row">
+        <label for="talleProducto" class="col-sm-2 col-form-label">TALLE</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="talleProducto" placeholder="Talle" />
+        </div>
+    </div>
+    @* CANTIDAD PRODUCTO*@
+    <div class="form-group row">
+        <label for="cantidadProducto" class="col-sm-2 col-form-label">CANTIDAD</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="cantidadProducto" placeholder="Cantidad Stock del Producto" />
+        </div>
+    </div>
+    @* DIRECCION IMAGEN PRODUCTO*@
+    <div class="form-group row">
+        <label for="imagenProducto" class="col-sm-2 col-form-label">DIRECCIÓN IMAGEN</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="imagenProducto" placeholder="Dirección de Imagen" />
+        </div>
+    </div>
+    @* SUBMIT *@
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>
+

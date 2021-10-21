@@ -67,7 +67,7 @@ namespace Seguimiento.Migrations
                     b.Property<int>("numero")
                         .HasColumnType("int");
 
-                    b.Property<string>("provicia")
+                    b.Property<string>("provincia")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -147,6 +147,9 @@ namespace Seguimiento.Migrations
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
 
+                    b.Property<string>("imagen")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("nombre")
                         .HasColumnType("nvarchar(max)");
 
@@ -158,7 +161,7 @@ namespace Seguimiento.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("PedidonroTraking");
+                    /*b.HasIndex("PedidonroTraking");*/
 
                     b.ToTable("Productos");
                 });

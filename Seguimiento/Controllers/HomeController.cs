@@ -23,7 +23,22 @@ namespace Seguimiento.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Empleados()
+        {
+            return View();
+        }
+
+        public IActionResult Productos()
+        {
+            return View();
+        }
+
+        public IActionResult Clientes()
+        {
+            return View();
+        }
+
+        public IActionResult Envios()
         {
             return View();
         }

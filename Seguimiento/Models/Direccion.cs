@@ -11,7 +11,7 @@ namespace Seguimiento.Models
         [Key]
         public int id { get; set; }
 
-        public string provicia { get; set;}
+        public string provincia { get; set;}
 
         public string calle { get; set; }
 

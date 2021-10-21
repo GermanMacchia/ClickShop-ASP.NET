@@ -10,7 +10,7 @@ using Seguimiento.Models;
 namespace Seguimiento.Migrations
 {
     [DbContext(typeof(SeguimientoContext))]
-    [Migration("20211020015938_initial")]
+    [Migration("20211020043003_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,7 +69,7 @@ namespace Seguimiento.Migrations
                     b.Property<int>("numero")
                         .HasColumnType("int");
 
-                    b.Property<string>("provicia")
+                    b.Property<string>("provincia")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -148,6 +148,9 @@ namespace Seguimiento.Migrations
 
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
+
+                    b.Property<string>("imagen")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nombre")
                         .HasColumnType("nvarchar(max)");
