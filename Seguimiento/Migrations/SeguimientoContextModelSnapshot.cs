@@ -161,7 +161,7 @@ namespace Seguimiento.Migrations
 
                     b.HasKey("id");
 
-                    /*b.HasIndex("PedidonroTraking");*/
+                    b.HasIndex("PedidonroTraking");
 
                     b.ToTable("Productos");
                 });
