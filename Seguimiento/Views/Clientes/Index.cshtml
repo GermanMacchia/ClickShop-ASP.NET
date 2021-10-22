@@ -19,10 +19,16 @@
                 @Html.DisplayNameFor(model => model.apellido).ToUpper()
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.dni).ToUpper()
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.telefono).ToUpper()
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.mail).ToUpper()
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion).ToUpper()
             </th>
 
             <th></th>
@@ -38,10 +44,16 @@
                 @Html.DisplayFor(modelItem => item.apellido)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.dni)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.telefono)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
             </td>
 
             <td>

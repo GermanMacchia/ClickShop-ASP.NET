@@ -18,6 +18,7 @@ namespace Seguimiento.Controllers
             _context = context;
         }
 
+
         // GET: Productos
         public async Task<IActionResult> Index()
         {
