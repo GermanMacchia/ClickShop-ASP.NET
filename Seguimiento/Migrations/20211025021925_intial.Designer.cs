@@ -10,8 +10,8 @@ using Seguimiento.Models;
 namespace Seguimiento.Migrations
 {
     [DbContext(typeof(SeguimientoContext))]
-    [Migration("20211021045123_initial")]
-    partial class initial
+    [Migration("20211025021925_intial")]
+    partial class intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,7 @@ namespace Seguimiento.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("direccionid")
+                    b.Property<int>("direccionId")
                         .HasColumnType("int");
 
                     b.Property<string>("mail")
@@ -47,8 +47,6 @@ namespace Seguimiento.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("dni");
-
-                    b.HasIndex("direccionid");
 
                     b.ToTable("Clientes");
                 });
@@ -70,6 +68,9 @@ namespace Seguimiento.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("provincia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("referencia")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -166,15 +167,6 @@ namespace Seguimiento.Migrations
                     b.HasIndex("PedidonroTraking");
 
                     b.ToTable("Productos");
-                });
-
-            modelBuilder.Entity("Seguimiento.Models.Cliente", b =>
-                {
-                    b.HasOne("Seguimiento.Models.Direccion", "direccion")
-                        .WithMany()
-                        .HasForeignKey("direccionid");
-
-                    b.Navigation("direccion");
                 });
 
             modelBuilder.Entity("Seguimiento.Models.Pedido", b =>

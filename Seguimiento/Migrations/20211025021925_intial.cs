@@ -3,10 +3,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Seguimiento.Migrations
 {
-    public partial class initial : Migration
+    public partial class intial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Clientes",
+                columns: table => new
+                {
+                    dni = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    direccionId = table.Column<int>(type: "int", nullable: false),
+                    mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clientes", x => x.dni);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Direcciones",
                 columns: table => new
@@ -16,7 +33,8 @@ namespace Seguimiento.Migrations
                     provincia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     numero = table.Column<int>(type: "int", nullable: false),
-                    localidad = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    localidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    referencia = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,29 +53,6 @@ namespace Seguimiento.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Empleados", x => x.legajo);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clientes",
-                columns: table => new
-                {
-                    dni = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    direccionid = table.Column<int>(type: "int", nullable: true),
-                    mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clientes", x => x.dni);
-                    table.ForeignKey(
-                        name: "FK_Clientes_Direcciones_direccionid",
-                        column: x => x.direccionid,
-                        principalTable: "Direcciones",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,11 +117,6 @@ namespace Seguimiento.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clientes_direccionid",
-                table: "Clientes",
-                column: "direccionid");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Pedidos_clientedni",
                 table: "Pedidos",
                 column: "clientedni");
@@ -159,10 +149,10 @@ namespace Seguimiento.Migrations
                 name: "Clientes");
 
             migrationBuilder.DropTable(
-                name: "Empleados");
+                name: "Direcciones");
 
             migrationBuilder.DropTable(
-                name: "Direcciones");
+                name: "Empleados");
         }
     }
 }

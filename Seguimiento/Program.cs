@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//INYECCION DE DEPENDENCIA -> concepto escencial para comprender los anidamientos
 namespace Seguimiento
 {
     public class Program
@@ -16,6 +17,7 @@ namespace Seguimiento
             CreateHostBuilder(args).Build().Run();
         }
 
+        //linea de codigo que llama el Main. Esto va a crear la aplicación web
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -24,3 +26,4 @@ namespace Seguimiento
                 });
     }
 }
+

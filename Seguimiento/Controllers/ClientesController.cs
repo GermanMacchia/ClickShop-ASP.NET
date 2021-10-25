@@ -43,9 +43,12 @@ namespace Seguimiento.Controllers
         }
 
         // GET: Clientes/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            //TO DO_----------------------VER COMO PASAR
+            var direcciones = await _context.Direcciones.ToListAsync();
+            ViewBag.dir = direcciones;
+            return View( );
         }
 
         // POST: Clientes/Create
@@ -53,7 +56,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("telefono,mail,nombre,apellido,dni")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("telefono,mail,nombre,apellido,dni,direccionId")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {

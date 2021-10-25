@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable< Seguimiento.Models.Producto >
+
 <div class="text-center">
     <h1 class="display-6">Administrador de Envios</h1>
 </div>
@@ -7,14 +8,49 @@
         @*CARRITO*@
         <div class="col-sm-3">
             <div>
-                <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" />
-                <hr />
-                <br />
-                <table>
-                </table>
-                <hr />
-                <button class="btn btn-success">Procesar Envío</button>
-            </div>
+                <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 bd-highlight">
+                        <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" />
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <h2 style="padding-top: 2.8rem;">Carrito</h2>
+                    </div>
+                </div>
+                    <hr />
+                    <br />
+                    <table>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6>CANTIDAD ARTICULOS</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6>SUBTOTAL</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6>ENVIO</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6 class="font-weight-bold">TOTAL</h6>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <hr />
+                    <button class="btn btn-success">Procesar Envío</button>
+                </div>
         </div>
         @*TABLA*@
         <div class="col-sm-9">
@@ -22,53 +58,39 @@
                 <thead>
                     <tr>
                         <th>
-                            IMAGEN
+                            @Html.DisplayNameFor(model => model.imagen).ToUpper()
                         </th>
                         <th>
-                            NOMBRE
+                            @Html.DisplayNameFor(model => model.nombre).ToUpper()
                         </th>
                         <th>
-                            PRECIO
+                            @Html.DisplayNameFor(model => model.precio).ToUpper()
                         </th>
                         <th>
-                            CANTIDAD
-                        </th>
-                        <th>
-                            TALLE
+                            @Html.DisplayNameFor(model => model.talle).ToUpper()
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.precio)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.talle)
+                        </td>
+                    </tr>
+                    }
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold>CANTIDAD ARTICULOS</bold>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold>SUBTOTAL</bold>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold>ENVIO</bold>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold>TOTAL</bold>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                </tfoot>
+
             </table>
         </div>
     </div>

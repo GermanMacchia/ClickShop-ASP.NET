@@ -11,7 +11,7 @@ namespace Seguimiento.Models
         public string telefono { get; set; }
 
         [Required]
-        public Direccion direccion { get; set; }
+        public int direccionId { get; set; }
 
         [Required]
         public string mail { get; set; }
