@@ -11,32 +11,32 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="celdas" asp-for="nombre" class="control-label, celdas">Nombre</label>
+                <label  asp-for="nombre" class="control-label, celdas">Nombre</label>
                 <input asp-for="nombre" class="form-control" />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="celdas" asp-for="apellido" class="control-label">Apellido</label>
+                <label asp-for="apellido" class="control-label, celdas">Apellido</label>
                 <input asp-for="apellido" class="form-control" />
                 <span asp-validation-for="apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="celdas" asp-for="dni" class="control-label">Dni</label>
+                <label asp-for="dni" class="control-label, celdas">Dni</label>
                 <input asp-for="dni" class="form-control" />
                 <span asp-validation-for="dni" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="celdas" asp-for="telefono" class="control-label">Teléfono</label>
+                <label asp-for="telefono" class="control-label, celdas">Teléfono</label>
                 <input asp-for="telefono" class="form-control" />
                 <span asp-validation-for="telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="celdas" asp-for="mail" class="control-label">Email</label>
+                <label  asp-for="mail" class="control-label, celdas">Email</label>
                 <input asp-for="mail" class="form-control" />
                 <span asp-validation-for="mail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="direccionId" class="control-label">DIRECCIÓN</label>
+                <label asp-for="direccionId" class="control-label">Dirección</label>
                 <select asp-for="direccionId" class="form-control">
                     @foreach(var item in ViewBag.dir)
             {
@@ -49,7 +49,7 @@
                 <a class = "boton-link" asp-controller="Direcciones" asp-action="Create">Crear nueva dirección</a>
             </p>
             <p>
-                <a asp-controller="Direcciones" asp-action="Index">Ver Lista Direcciones</a>
+                <a class="boton-link" asp-controller="Direcciones" asp-action="Index">Ver lista de direcciones</a>
             </p>
             <br />
             <div class="form-group">

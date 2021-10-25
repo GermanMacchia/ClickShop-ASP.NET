@@ -4,34 +4,34 @@
     ViewData["Title"] = "Create";
 }
 
-<h4 class="titulo_crecion">Ingrese los datos</h4>
+<h4 class="titulo_creaion">Ingrese los datos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="provincia" class="control-label, celdas">PROVINCIA</label>
+                <label asp-for="provincia" class="control-label, celdas">Provincia</label>
                 <input asp-for="provincia" class="form-control" />
                 <span asp-validation-for="provincia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="calle" class="control-label, celdas">CALLE</label>
+                <label asp-for="calle" class="control-label, celdas">Calle</label>
                 <input asp-for="calle" class="form-control" />
                 <span asp-validation-for="calle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="numero" class="control-label, celdas">NUMERO</label>
+                <label asp-for="numero" class="control-label, celdas">Numero</label>
                 <input asp-for="numero" class="form-control" />
                 <span asp-validation-for="numero" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="localidad" class="control-label, celdas">LOCALIDAD</label>
+                <label asp-for="localidad" class="control-label, celdas">Localidad</label>
                 <input asp-for="localidad" class="form-control" />
                 <span asp-validation-for="localidad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="referencia" class="control-label">REFERENCIA</label>
+                <label asp-for="referencia" class="control-label">Referencia</label>
                 <input asp-for="referencia" class="form-control" />
                 <span asp-validation-for="referencia" class="text-danger"></span>
             </div>
