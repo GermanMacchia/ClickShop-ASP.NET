@@ -29,7 +29,7 @@ namespace Seguimiento.Models
         public Direccion direccion { get; set;}
 
         [Required]
-        public Estado estado { get; set; }
+        public Estado estado { get;}
 
     }
 }

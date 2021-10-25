@@ -1,4 +1,4 @@
-﻿@model IEnumerable< Seguimiento.Models.Producto >
+@model IEnumerable< Seguimiento.Models.Producto >
 
 <div class="d-flex justify-content-between">
 
@@ -12,7 +12,7 @@
         </select>
     </div>
     <div class="p-3 bd-highlight">
-        <h1 class="display-6">Administrador de Envios</h1>
+        <h1 class="display-6 titulo" style="color:lightseagreen">A >Administrador de Envios</h1>
     </div>
 </div>
     <div class="row">
@@ -68,21 +68,20 @@
         <div class="col-sm-9">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>
+                    <tr>                      
+                        <th class="celdas">
                             @Html.DisplayNameFor(model => model.imagen).ToUpper()
                         </th>
-                        <th>
+                        <th class="celdas">
                             @Html.DisplayNameFor(model => model.nombre).ToUpper()
                         </th>
-                        <th>
+                        <th class="celdas">
                             @Html.DisplayNameFor(model => model.precio).ToUpper()
                         </th>
-                        <th>
+                        <th class="celdas">
                             @Html.DisplayNameFor(model => model.talle).ToUpper()
                         </th>
                         <th>
-
                         </th>
                     </tr>
                 </thead>
@@ -112,6 +111,35 @@
                         </tr>
                     }
                 </tbody>
+                <tfoot class="cel">
+                    <tr>
+                        <td>
+                            <hr />
+                            <bold class="celdas">Cantidad articulos</bold>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                            <bold class="celdas" >Subtotal</bold>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                            <bold class="celdas">Envio </bold>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                            <bold class="celdas">Total</bold>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+
             </table>
         </div>
     </div>

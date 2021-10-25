@@ -11,10 +11,13 @@ namespace Seguimiento.Models
         [Key]
         public int id { get; set; }
 
+        [Required]
         public string provincia { get; set;}
 
+        [Required]
         public string calle { get; set; }
 
+        [Required]
         public int numero { get; set; }
 
         public string localidad { get; set; }

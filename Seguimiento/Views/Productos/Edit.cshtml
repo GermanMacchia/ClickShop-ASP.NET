@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar</h1>
+<h4 class="titulos_editar">Editar el producto</h4>
 
-<h4>Producto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,27 +13,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
             <div class="form-group">
-                <label asp-for="nombre" class="control-label">NOMBRE</label>
+                <label asp-for="nombre" class="control-label">Nombre</label>
                 <input asp-for="nombre" class="form-control" />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="precio" class="control-label">PRECIO</label>
+                <label asp-for="precio" class="control-label">Precio</label>
                 <input asp-for="precio" class="form-control" />
                 <span asp-validation-for="precio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cantidad" class="control-label">CANTIDAD</label>
+                <label asp-for="cantidad" class="control-label">Cantidad</label>
                 <input asp-for="cantidad" class="form-control" />
                 <span asp-validation-for="cantidad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="talle" class="control-label">TALLE</label>
+                <label asp-for="talle" class="control-label">Talle</label>
                 <input asp-for="talle" class="form-control" />
                 <span asp-validation-for="talle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="imagen" class="control-label">DIRECCIÓN IMAGEN</label>
+                <label asp-for="imagen" class="control-label">Dirección imagen</label>
                 <input asp-for="imagen" class="form-control" />
                 <span asp-validation-for="imagen" class="text-danger"></span>
             </div>
@@ -46,7 +45,7 @@
 </div>
 
 <div>
-    <a style="color:cornflowerblue;" asp-action="Index">Volver al Listado</a>
+    <a class="boton-link" asp-action="Index">Volver al listado</a>
 </div>
 
 @section Scripts {
