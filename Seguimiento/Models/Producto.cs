@@ -11,14 +11,16 @@ namespace Seguimiento.Models
         [Key]
         public int id { get; set; }
 
+        [Required]
         public string nombre { get; set;}
 
         public double precio { get; set; }
 
+        [Required]
         public int cantidad { get; set; }
 
+        [Required]
         public int talle { get; set; }
-
         public string imagen { get; set; }
     }
 }

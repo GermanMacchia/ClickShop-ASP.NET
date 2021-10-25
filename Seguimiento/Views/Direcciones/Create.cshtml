@@ -4,29 +4,29 @@
     ViewData["Title"] = "Create";
 }
 
-<h4>Ingreso a Dirección</h4>
+<h4 class="titulo_crecion">Ingrese los datos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="provincia" class="control-label">PROVINCIA</label>
+                <label asp-for="provincia" class="control-label, celdas">PROVINCIA</label>
                 <input asp-for="provincia" class="form-control" />
                 <span asp-validation-for="provincia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="calle" class="control-label">CALLE</label>
+                <label asp-for="calle" class="control-label, celdas">CALLE</label>
                 <input asp-for="calle" class="form-control" />
                 <span asp-validation-for="calle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="numero" class="control-label">NUMERO</label>
+                <label asp-for="numero" class="control-label, celdas">NUMERO</label>
                 <input asp-for="numero" class="form-control" />
                 <span asp-validation-for="numero" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="localidad" class="control-label">LOCALIDAD</label>
+                <label asp-for="localidad" class="control-label, celdas">LOCALIDAD</label>
                 <input asp-for="localidad" class="form-control" />
                 <span asp-validation-for="localidad" class="text-danger"></span>
             </div>
@@ -38,7 +38,7 @@
 </div>
 
 <div>
-    <a asp-controller="Clientes" asp-action="Create">Volver a Cliente</a>
+    <a class ="boton-link" asp-controller="Clientes" asp-action="Create">Volver a cliente</a>
 </div>
 
 @section Scripts {

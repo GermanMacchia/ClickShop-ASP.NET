@@ -5,18 +5,18 @@
 }
 
 
-<h1>Empleados</h1>
+<h1 class="titulo">Empleados</h1>
 
 <p>
-    <a style="color:cornflowerblue;" asp-action="Create">Crear Nuevo Empleado</a>
+    <a class="boton-link" asp-action="Create">Crear un nuevo empleado</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="celdas">
                 @Html.DisplayNameFor(model => model.nombre).ToUpper()
             </th>
-            <th>
+            <th class="celdas">
                 @Html.DisplayNameFor(model => model.apellido).ToUpper()
             </th>
             <th></th>
@@ -33,9 +33,9 @@
                     @Html.DisplayFor(modelItem => item.apellido)
                 </td>
                 <td>
-                    <a style="color:cornflowerblue;" asp-action="Edit" asp-route-id="@item.legajo">Editar</a> |
-                    <a style="color:cornflowerblue;" asp-action="Details" asp-route-id="@item.legajo">Detalles</a> |
-                    <a style="color:cornflowerblue;" asp-action="Delete" asp-route-id="@item.legajo">Borrar</a>
+                    <a class="boton-link" asp-action="Edit" asp-route-id="@item.legajo">Editar</a> |
+                    <a class="boton-link" asp-action="Details" asp-route-id="@item.legajo">Detalles</a> |
+                    <a class="boton-link" asp-action="Delete" asp-route-id="@item.legajo">Borrar</a>
                 </td>
             </tr>
         }
