@@ -88,7 +88,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("telefono,mail,nombre,apellido,dni")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("telefono,mail,nombre,apellido,dni,direccionId")] Cliente cliente)
         {
             if (id != cliente.dni)
             {

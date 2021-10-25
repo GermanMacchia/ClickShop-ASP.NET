@@ -27,6 +27,9 @@ namespace Seguimiento.Controllers
         //Ver startup endpoint
         public async Task<IActionResult> Index()
         {
+            var empleados = await _context.Empleados.ToListAsync();
+            ViewBag.emp = empleados;
+
             return View(await _context.Productos.ToListAsync());     
         }
 

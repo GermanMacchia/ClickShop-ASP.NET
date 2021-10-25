@@ -1,9 +1,20 @@
 ﻿@model IEnumerable< Seguimiento.Models.Producto >
 
-<div class="text-center">
-    <h1 class="display-6">Administrador de Envios</h1>
+<div class="d-flex justify-content-between">
+
+    <div class="p-3 bd-highlight">
+        <select style="width:13rem;" class="form-select form-control-md" >
+            <option selected>Login</option>
+            @foreach (var e in ViewBag.emp)
+            {
+                <option value="@e.legajo">@e.nombre @e.apellido</option>
+            }
+        </select>
+    </div>
+    <div class="p-3 bd-highlight">
+        <h1 class="display-6">Administrador de Envios</h1>
+    </div>
 </div>
-<div>
     <div class="row">
         @*CARRITO*@
         <div class="col-sm-3">
@@ -16,41 +27,42 @@
                         <h2 style="padding-top: 2.8rem;">Carrito</h2>
                     </div>
                 </div>
-                    <hr />
-                    <br />
-                    <table>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <hr />
-                                    <h6>CANTIDAD ARTICULOS</h6>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <hr />
-                                    <h6>SUBTOTAL</h6>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <hr />
-                                    <h6>ENVIO</h6>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <hr />
-                                    <h6 class="font-weight-bold">TOTAL</h6>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <hr />
-                    <button class="btn btn-success">Procesar Envío</button>
-                </div>
+                <hr />
+                <br />
+                <table>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <hr />
+                                <h6>CANTIDAD ARTICULOS</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <hr />
+                                <h6>SUBTOTAL</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <hr />
+                                <h6>ENVIO</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <hr />
+                                <h6 class="font-weight-bold">TOTAL</h6>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr />
+
+                <button class="btn btn-success">Procesar Envío</button>
+            </div>
         </div>
         @*TABLA*@
         <div class="col-sm-9">
@@ -69,28 +81,37 @@
                         <th>
                             @Html.DisplayNameFor(model => model.talle).ToUpper()
                         </th>
+                        <th>
+
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.nombre)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.precio)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.talle)
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.nombre)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.precio)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.talle)
+                            </td>
+                            <td class="align-middle">
+                                <a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
-
             </table>
         </div>
     </div>
