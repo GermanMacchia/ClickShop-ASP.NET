@@ -22,5 +22,7 @@ namespace Seguimiento.Models
 
         public string localidad { get; set; }
 
+        public string referencia { get; set; }
+
     }
 }

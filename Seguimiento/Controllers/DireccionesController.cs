@@ -53,7 +53,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,provincia,calle,numero,localidad")] Direccion direccion)
+        public async Task<IActionResult> Create([Bind("id,provincia,calle,numero,localidad,referencia")] Direccion direccion)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,provincia,calle,numero,localidad")] Direccion direccion)
+        public async Task<IActionResult> Edit(int id, [Bind("id,provincia,calle,numero,localidad,referencia")] Direccion direccion)
         {
             if (id != direccion.id)
             {

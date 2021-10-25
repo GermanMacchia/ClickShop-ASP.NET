@@ -46,6 +46,7 @@ namespace Seguimiento
 
             app.UseAuthorization();
 
+            // como default esta organizado el ruteo en home/index
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
