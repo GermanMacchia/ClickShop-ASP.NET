@@ -101,7 +101,11 @@ body {
 }
 
 .celdas {
-    font-family: 'Times New Roman'
+    font-family: 'Times New Roman';
+}
+
+.centrado {
+    text-align: center;
 }
 
 

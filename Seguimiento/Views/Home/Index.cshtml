@@ -4,17 +4,22 @@
 
     <div class="p-3 bd-highlight">
         <select style="width:13rem;" class="form-select form-control-md" >
+            
             <option selected>Login</option>
+           
             @foreach (var e in ViewBag.emp)
             {
                 <option value="@e.legajo">@e.nombre @e.apellido</option>
             }
         </select>
     </div>
+  
     <div class="p-3 bd-highlight">
-        <h1 class="display-6 titulo" style="color:lightseagreen">A >Administrador de Envios</h1>
+        <h1 class="display-6 titulo centrado" style="color:lightseagreen "> Administrador de Envios</h1>
     </div>
 </div>
+
+<div>
     <div class="row">
         @*CARRITO*@
         <div class="col-sm-3">
@@ -111,35 +116,7 @@
                         </tr>
                     }
                 </tbody>
-                <tfoot class="cel">
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold class="celdas">Cantidad articulos</bold>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold class="celdas" >Subtotal</bold>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold class="celdas">Envio </bold>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr />
-                            <bold class="celdas">Total</bold>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                </tfoot>
-
+                
             </table>
         </div>
     </div>
