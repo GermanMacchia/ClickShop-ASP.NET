@@ -8,27 +8,32 @@ namespace Seguimiento.Models
 {
     public class Pedido
     {
-        public Cliente cliente  {get; set;}
-
         [Key]
+        public int id { get; set; }
+
+        [Required(ErrorMessage = "El cliente es un dato requerido")]
+        public int clienteId  {get; set;}
+
+
         public int nroTraking {get; set;}
+
 
         public string comentarios { get; set;}
 
         public DateTime fechaEnvio { get; set;}
 
-        [Required]
+        [Required(ErrorMessage = "La Fecha Actual es un dato requerido")]
         public DateTime fechaInicio { get; set;}
 
-        [Required]
-        public Empleado encargado { get; set;}
+        [Required(ErrorMessage = "El Encargado del Pedido es un dato requerido")]
+        public int empleadoId { get; set;}
 
         [Required]
         public List<Producto> productos { get; set;}
 
-        public Direccion direccion { get; set;}
+        public int direccionId { get; set;}
 
-        [Required]
+
         public Estado estado { get;}
 
     }

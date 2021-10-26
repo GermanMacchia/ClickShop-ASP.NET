@@ -11,16 +11,17 @@ namespace Seguimiento.Models
         [Key]
         public int id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El nombre es un dato requerido")]
         public string nombre { get; set;}
 
         public double precio { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La cantidad es un dato requerido")]
         public int cantidad { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El talle es un dato requerido")]
         public int talle { get; set; }
+
         public string imagen { get; set; }
     }
 }

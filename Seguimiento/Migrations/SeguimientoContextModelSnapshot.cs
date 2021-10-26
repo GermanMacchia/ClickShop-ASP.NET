@@ -21,7 +21,7 @@ namespace Seguimiento.Migrations
 
             modelBuilder.Entity("Seguimiento.Models.Cliente", b =>
                 {
-                    b.Property<int>("dni")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -31,6 +31,9 @@ namespace Seguimiento.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("direccionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("dni")
                         .HasColumnType("int");
 
                     b.Property<string>("mail")
@@ -44,7 +47,7 @@ namespace Seguimiento.Migrations
                     b.Property<string>("telefono")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("dni");
+                    b.HasKey("id");
 
                     b.ToTable("Clientes");
                 });
@@ -57,15 +60,18 @@ namespace Seguimiento.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("calle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("localidad")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("numero")
                         .HasColumnType("int");
 
                     b.Property<string>("provincia")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("referencia")
@@ -98,24 +104,21 @@ namespace Seguimiento.Migrations
 
             modelBuilder.Entity("Seguimiento.Models.Pedido", b =>
                 {
-                    b.Property<int>("nroTraking")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("clientedni")
+                    b.Property<int>("clienteId")
                         .HasColumnType("int");
 
                     b.Property<string>("comentarios")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("direccionid")
+                    b.Property<int>("direccionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("encargadolegajo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("estado")
+                    b.Property<int>("empleadoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("fechaEnvio")
@@ -124,13 +127,10 @@ namespace Seguimiento.Migrations
                     b.Property<DateTime>("fechaInicio")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("nroTraking");
+                    b.Property<int>("nroTraking")
+                        .HasColumnType("int");
 
-                    b.HasIndex("clientedni");
-
-                    b.HasIndex("direccionid");
-
-                    b.HasIndex("encargadolegajo");
+                    b.HasKey("id");
 
                     b.ToTable("Pedidos");
                 });
@@ -142,7 +142,7 @@ namespace Seguimiento.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("PedidonroTraking")
+                    b.Property<int?>("Pedidoid")
                         .HasColumnType("int");
 
                     b.Property<int>("cantidad")
@@ -152,6 +152,7 @@ namespace Seguimiento.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("precio")
@@ -162,37 +163,16 @@ namespace Seguimiento.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("PedidonroTraking");
+                    b.HasIndex("Pedidoid");
 
                     b.ToTable("Productos");
-                });
-
-            modelBuilder.Entity("Seguimiento.Models.Pedido", b =>
-                {
-                    b.HasOne("Seguimiento.Models.Cliente", "cliente")
-                        .WithMany()
-                        .HasForeignKey("clientedni");
-
-                    b.HasOne("Seguimiento.Models.Direccion", "direccion")
-                        .WithMany()
-                        .HasForeignKey("direccionid");
-
-                    b.HasOne("Seguimiento.Models.Empleado", "encargado")
-                        .WithMany()
-                        .HasForeignKey("encargadolegajo");
-
-                    b.Navigation("cliente");
-
-                    b.Navigation("direccion");
-
-                    b.Navigation("encargado");
                 });
 
             modelBuilder.Entity("Seguimiento.Models.Producto", b =>
                 {
                     b.HasOne("Seguimiento.Models.Pedido", null)
                         .WithMany("productos")
-                        .HasForeignKey("PedidonroTraking");
+                        .HasForeignKey("Pedidoid");
                 });
 
             modelBuilder.Entity("Seguimiento.Models.Pedido", b =>

@@ -38,10 +38,12 @@
             <div class="form-group">
                 <label asp-for="direccionId" class="control-label">Dirección</label>
                 <select asp-for="direccionId" class="form-control">
-                    @foreach(var item in ViewBag.dir)
-            {
-                    <option value="@item.id">@item.calle @item.numero, @item.localidad, @item.provincia</option>
-            }
+                    @foreach (var item in ViewBag.dir)
+                    {
+
+                        <option value=@item.id >@item.calle @item.numero, @item.localidad, @item.provincia</option>
+
+                    }
                 </select>
                 <span asp-validation-for="direccionId" class="text-danger"></span>
             </div>

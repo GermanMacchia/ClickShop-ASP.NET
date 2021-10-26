@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Seguimiento.Migrations
 {
-    public partial class intial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,17 +11,18 @@ namespace Seguimiento.Migrations
                 name: "Clientes",
                 columns: table => new
                 {
-                    dni = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     direccionId = table.Column<int>(type: "int", nullable: false),
                     mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    dni = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clientes", x => x.dni);
+                    table.PrimaryKey("PK_Clientes", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,10 +31,10 @@ namespace Seguimiento.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    provincia = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    provincia = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    calle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     numero = table.Column<int>(type: "int", nullable: false),
-                    localidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    localidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     referencia = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -59,37 +60,19 @@ namespace Seguimiento.Migrations
                 name: "Pedidos",
                 columns: table => new
                 {
-                    nroTraking = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    clientedni = table.Column<int>(type: "int", nullable: true),
+                    clienteId = table.Column<int>(type: "int", nullable: false),
+                    nroTraking = table.Column<int>(type: "int", nullable: false),
                     comentarios = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fechaEnvio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    encargadolegajo = table.Column<int>(type: "int", nullable: true),
-                    direccionid = table.Column<int>(type: "int", nullable: true),
-                    estado = table.Column<int>(type: "int", nullable: false)
+                    empleadoId = table.Column<int>(type: "int", nullable: false),
+                    direccionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pedidos", x => x.nroTraking);
-                    table.ForeignKey(
-                        name: "FK_Pedidos_Clientes_clientedni",
-                        column: x => x.clientedni,
-                        principalTable: "Clientes",
-                        principalColumn: "dni",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pedidos_Direcciones_direccionid",
-                        column: x => x.direccionid,
-                        principalTable: "Direcciones",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pedidos_Empleados_encargadolegajo",
-                        column: x => x.encargadolegajo,
-                        principalTable: "Empleados",
-                        principalColumn: "legajo",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_Pedidos", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,53 +81,32 @@ namespace Seguimiento.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     precio = table.Column<double>(type: "float", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     talle = table.Column<int>(type: "int", nullable: false),
                     imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PedidonroTraking = table.Column<int>(type: "int", nullable: true)
+                    Pedidoid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Productos", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Productos_Pedidos_PedidonroTraking",
-                        column: x => x.PedidonroTraking,
+                        name: "FK_Productos_Pedidos_Pedidoid",
+                        column: x => x.Pedidoid,
                         principalTable: "Pedidos",
-                        principalColumn: "nroTraking",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_clientedni",
-                table: "Pedidos",
-                column: "clientedni");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_direccionid",
-                table: "Pedidos",
-                column: "direccionid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_encargadolegajo",
-                table: "Pedidos",
-                column: "encargadolegajo");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Productos_PedidonroTraking",
+                name: "IX_Productos_Pedidoid",
                 table: "Productos",
-                column: "PedidonroTraking");
+                column: "Pedidoid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Productos");
-
-            migrationBuilder.DropTable(
-                name: "Pedidos");
-
             migrationBuilder.DropTable(
                 name: "Clientes");
 
@@ -153,6 +115,12 @@ namespace Seguimiento.Migrations
 
             migrationBuilder.DropTable(
                 name: "Empleados");
+
+            migrationBuilder.DropTable(
+                name: "Productos");
+
+            migrationBuilder.DropTable(
+                name: "Pedidos");
         }
     }
 }

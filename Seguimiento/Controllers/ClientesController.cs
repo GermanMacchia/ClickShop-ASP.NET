@@ -21,7 +21,10 @@ namespace Seguimiento.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
+            List<Direccion> direcciones = await _context.Direcciones.ToListAsync();
+            ViewBag.dir = direcciones;
             return View(await _context.Clientes.ToListAsync());
+
         }
 
         // GET: Clientes/Details/5
@@ -33,7 +36,7 @@ namespace Seguimiento.Controllers
             }
 
             var cliente = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.dni == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -45,11 +48,11 @@ namespace Seguimiento.Controllers
         // GET: Clientes/Create
         public async Task<IActionResult> Create()
         {
-            //TO DO_----------------------VER COMO PASAR
             var direcciones = await _context.Direcciones.ToListAsync();
             ViewBag.dir = direcciones;
             return View( );
         }
+
 
         // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -70,6 +73,9 @@ namespace Seguimiento.Controllers
         // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            List<Direccion> direcciones = await _context.Direcciones.ToListAsync();
+            ViewBag.dir = direcciones;
+
             if (id == null)
             {
                 return NotFound();
@@ -90,7 +96,10 @@ namespace Seguimiento.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("telefono,mail,nombre,apellido,dni,direccionId")] Cliente cliente)
         {
-            if (id != cliente.dni)
+            List<Direccion> direcciones = await _context.Direcciones.ToListAsync();
+            ViewBag.dir = direcciones;
+
+            if (id != cliente.id)
             {
                 return NotFound();
             }
@@ -104,7 +113,7 @@ namespace Seguimiento.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClienteExists(cliente.dni))
+                    if (!ClienteExists(cliente.id))
                     {
                         return NotFound();
                     }
@@ -127,7 +136,7 @@ namespace Seguimiento.Controllers
             }
 
             var cliente = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.dni == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -149,7 +158,7 @@ namespace Seguimiento.Controllers
 
         private bool ClienteExists(int id)
         {
-            return _context.Clientes.Any(e => e.dni == id);
+            return _context.Clientes.Any(e => e.id == id);
         }
     }
 }

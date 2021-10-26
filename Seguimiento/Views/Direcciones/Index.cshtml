@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="titulo" >Index</h1>
+<h1 class="titulo" >Direcciones</h1>
 
 
 <p>
@@ -17,19 +17,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.provincia)
+                @Html.DisplayNameFor(model => model.provincia).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.calle)
+                @Html.DisplayNameFor(model => model.calle).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.numero)
+                @Html.DisplayNameFor(model => model.numero).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.localidad)
+                @Html.DisplayNameFor(model => model.localidad).ToUpper()
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.referencia)
+                @Html.DisplayNameFor(model => model.referencia).ToUpper()
             </th>
             <th></th>
         </tr>
