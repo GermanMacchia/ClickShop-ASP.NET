@@ -1,19 +1,19 @@
-@model IEnumerable< Seguimiento.Models.Producto >
+@model IEnumerable<Seguimiento.Models.Producto>
 
 <div class="d-flex justify-content-between">
 
     <div class="p-3 bd-highlight">
-        <select style="width:13rem;" class="form-select form-control-md" >
-            
+        <select style="width:13rem;" class="form-select form-control-md">
+
             <option selected>Login</option>
-           
+
             @foreach (var e in ViewBag.emp)
             {
                 <option value="@e.legajo">@e.nombre @e.apellido</option>
             }
         </select>
     </div>
-  
+
     <div class="p-3 bd-highlight">
         <h1 class="display-6 titulo centrado" style="color:lightseagreen "> Administrador de Envios</h1>
     </div>
@@ -22,7 +22,7 @@
 <div>
     <div class="row">
         @*CARRITO*@
-        <div class="col-sm-3">
+        <div class="col-lg-3">
             <div>
                 <div class="d-flex flex-row bd-highlight mb-3">
                     <div class="p-2 bd-highlight">
@@ -35,7 +35,23 @@
                 <hr />
                 <br />
                 <table>
-                    <tbody>
+                    @*ACA DESPLIEGUE*@
+                    <tbody id="carrito">
+                        @foreach (var prod in ViewBag.carr)
+                            {
+                                <tr>
+                                    <td class="align-middle">
+                                        @prod.nombre
+                                    </td>
+                                    <td style="padding-left: 1rem;" class="align-middle">
+                                        @prod.precio
+                                    </td>
+                                    <td style="padding-left: 1.5rem;" class="align-middle">
+                                        @prod.talle
+                                    </td>
+                                </tr>
+
+                            }        
                     </tbody>
                     <tfoot>
                         <tr>
@@ -43,11 +59,17 @@
                                 <hr />
                                 <h6>CANTIDAD ARTICULOS</h6>
                             </td>
+                            <td>
+                                <p id="cantArt"></p>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <hr />
                                 <h6>SUBTOTAL</h6>
+                            </td>
+                            <td>
+                                <p id="subtotal"></p>
                             </td>
                         </tr>
                         <tr>
@@ -55,11 +77,17 @@
                                 <hr />
                                 <h6>ENVIO</h6>
                             </td>
+                            <td>
+                                <p id="envio"></p>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <hr />
                                 <h6 class="font-weight-bold">TOTAL</h6>
+                            </td>
+                            <td>
+                                <p id="total"></p>
                             </td>
                         </tr>
                     </tfoot>
@@ -73,7 +101,7 @@
         <div class="col-sm-9">
             <table class="table">
                 <thead>
-                    <tr>                      
+                    <tr>
                         <th class="celdas">
                             @Html.DisplayNameFor(model => model.imagen).ToUpper()
                         </th>
@@ -107,17 +135,24 @@
                                 @Html.DisplayFor(modelItem => item.talle)
                             </td>
                             <td class="align-middle">
-                                <a>
+                                <button onclick="agregarProducto( item )" >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
                                     </svg>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     }
                 </tbody>
-                
+
             </table>
         </div>
     </div>
 </div>
+
+@*{ 
+    void agregarProducto( Producto p )
+    {
+        ViewBag.carr.add(p);
+    }
+}*@

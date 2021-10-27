@@ -94,11 +94,8 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("telefono,mail,nombre,apellido,dni,direccionId")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("nombre,apellido,dni,telefono,mail,direccionId,id")] Cliente cliente)
         {
-            List<Direccion> direcciones = await _context.Direcciones.ToListAsync();
-            ViewBag.dir = direcciones;
-
             if (id != cliente.id)
             {
                 return NotFound();
