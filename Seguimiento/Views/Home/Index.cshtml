@@ -1,11 +1,13 @@
 @model IEnumerable<Seguimiento.Models.Producto>
 
+<body>
+
 <div class="d-flex justify-content-between">
 
-    <div class="p-3 bd-highlight">
+    <div class="p-3 bd-highlight" >
         <select style="width:13rem;" class="form-select form-control-md">
 
-            <option selected>Login</option>
+            <option  selected>Login</option>
 
             @foreach (var e in ViewBag.emp)
             {
@@ -15,12 +17,12 @@
     </div>
 
     <div class="p-3 bd-highlight">
-        <h1 class="display-6 titulo centrado" style="color:lightseagreen "> Administrador de Envios</h1>
+        <h1 class="display-6 titulo" style="color:lightseagreen "> Administrador de Envios</h1>
     </div>
 </div>
 
 <div>
-    <div class="row">
+    <div class="row ">
         @*CARRITO*@
         <div class="col-lg-3">
             <div>
@@ -149,10 +151,11 @@
         </div>
     </div>
 </div>
+</body>
 
-@*{ 
-    void agregarProducto( Producto p )
-    {
-        ViewBag.carr.add(p);
-    }
-}*@
+    @*{
+            void agregarProducto( Producto p )
+            {
+                ViewBag.carr.add(p);
+            }
+        }*@
