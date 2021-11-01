@@ -23,6 +23,7 @@ namespace Seguimiento.Models
         [Required(ErrorMessage = "La localidad es un dato requerido")]
         public string localidad { get; set; }
 
+        [StringLength(100)]
         public string referencia { get; set; }
 
     }

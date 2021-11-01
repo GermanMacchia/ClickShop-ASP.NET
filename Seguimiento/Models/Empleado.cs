@@ -9,9 +9,11 @@ namespace Seguimiento.Models
     public class Empleado
     {
         [Required(ErrorMessage = "El nombre es un dato requerido")]
+        [StringLength(20)]
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "El apellido es un dato requerido")]
+        [StringLength(20)]
         public string apellido { get; set; }
 
         [Key]
