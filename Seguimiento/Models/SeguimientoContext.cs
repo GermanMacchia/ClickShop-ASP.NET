@@ -19,7 +19,7 @@ namespace Seguimiento.Models
      
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer(@"Data Source = DESKTOP-9PL6VL2\SQLEXPRESS;" + "Initial Catalog = ClickShop;" + "Integrated Security = true");
+            optionBuilder.UseSqlServer(@"Data Source=DESKTOP-RDED77V\SQLEXPRESS;" + "Initial Catalog = ClickShop;" + "Integrated Security = true");
         }
 
     }

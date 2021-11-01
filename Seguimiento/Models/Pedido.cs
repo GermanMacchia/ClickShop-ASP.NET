@@ -17,7 +17,7 @@ namespace Seguimiento.Models
 
         public int nroTraking {get; set;}
 
-
+        [StringLength(300)]
         public string comentarios { get; set;}
 
         public DateTime fechaEnvio { get; set;}
@@ -32,7 +32,6 @@ namespace Seguimiento.Models
         public List<Producto> productos { get; set;}
 
         public int direccionId { get; set;}
-
 
         public Estado estado { get;}
 
