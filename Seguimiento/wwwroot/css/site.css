@@ -59,8 +59,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    margin-bottom: 80px;
+    background-image: url("../imagenes/fondoPrincipal.jpg"); 
+    background-repeat: no-repeat;
 }
 .footer {
   position: absolute;
@@ -107,5 +108,14 @@ body {
 .centrado {
     text-align: center;
 }
+
+.imagen_superior {
+    background-image: url("../imagenes/ondas.jpg");
+    background-position-y: center;
+}
+
+
+
+
 
 

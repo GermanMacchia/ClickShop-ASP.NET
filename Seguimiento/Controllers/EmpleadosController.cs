@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Seguimiento.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace Seguimiento.Controllers
 {
@@ -21,6 +23,8 @@ namespace Seguimiento.Controllers
         // GET: Empleados
         public async Task<IActionResult> Index()
         {
+            //obtener el valor o en este caso objeto guardado en home
+            //var empleado = JsonConvert.DeserializeObject<Empleado>(HttpContext.Session.GetString("Empleadosession"));
             return View(await _context.Empleados.ToListAsync());
         }
 
