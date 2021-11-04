@@ -39,7 +39,9 @@
                 <table>
                     @*ACA DESPLIEGUE*@
                     <tbody id="carrito">
-                        @foreach (var prod in ViewBag.carr)
+                        @if (ViewBag.carr != null)
+                        {
+                            foreach (var prod in ViewBag.carr)
                             {
                                 <tr>
                                     <td class="align-middle">
@@ -53,7 +55,8 @@
                                     </td>
                                 </tr>
 
-                            }        
+                            }
+                        }
                     </tbody>
                     <tfoot>
                         <tr>
@@ -121,32 +124,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @using (Html.BeginForm("create", "Carritos"))
                     {
-                        <tr>
-                            <td>
-                                <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.nombre)
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.precio)
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.talle)
-                            </td>
-                            <td class="align-middle">
-                                <button onclick="agregarProducto( item )" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                    }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.nombre)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.precio)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.talle)
+                                </td>
+                                <td class="align-middle">
+                                    <button type="submit" name="boton" value=@item.id>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                     }
                 </tbody>
-
             </table>
         </div>
     </div>

@@ -16,10 +16,11 @@ namespace Seguimiento.Models
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }  
         public DbSet<Producto> Productos { get; set; }
-     
+        public DbSet<Carrito> Carritos { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer(@"Data Source = DESKTOP-9PL6VL2\SQLEXPRESS;" + "Initial Catalog = ClickShop;" + "Integrated Security = true");
+            optionBuilder.UseSqlServer(@"Data Source = PC-DESKTOP;" + "Initial Catalog = ClickShop;" + "Integrated Security = true");
         }
 
     }

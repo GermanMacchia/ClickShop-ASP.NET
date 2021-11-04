@@ -18,42 +18,17 @@ namespace Seguimiento.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SeguimientoContext _context;
-        private List<Producto> carrito;
-
 
 
         public HomeController(ILogger<HomeController> logger, SeguimientoContext context)
         {
             _logger = logger;
             _context = context;
-            carrito = new List<Producto>();
         }
+        
 
-        public void AgregarCarrito( Producto produc )
-        {
-            carrito.Add(produc);
-        }
-
-        public void agregarProducto(Producto produc)
-        {
-            carrito.Add(produc);
-        }
-
-        //Ver startup endpoint                  List<Producto> carrito = new List<Producto>();
         public async Task<IActionResult> Index()
         {
-           
-           // var empleado = new Empleado()
-           // {
-           //     nombre = "Nuevo",
-           //     apellido = "Usuario"
-           // };
-           //
-           // HttpContext.Session.SetString("EmpleadoSession",JsonConvert.SerializeObject(empleado));
-
-            ViewBag.carr = this.carrito;
-
-            ///ESTO IMPORTANTE
             var empleados = await _context.Empleados.ToListAsync();
             ViewBag.emp = empleados;
 
@@ -61,12 +36,7 @@ namespace Seguimiento.Controllers
         }
 
 
-        //..../CONTROLLER/ACTION/PARAMS
-        //PRUEBA => .../home/detalle/id
-        public IActionResult Detalle(int id)
-        {
-            return Ok("Pusiste en el parametro el numero " +  id);
-        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -74,6 +44,14 @@ namespace Seguimiento.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        //..../CONTROLLER/ACTION/PARAMS
+        //PRUEBA => .../home/detalle/id
+        public IActionResult Detalle(int id)
+        {
+            return Ok("Pusiste en el parametro el numero " + id);
         }
     }
 }

@@ -28,6 +28,9 @@
                             <a class="nav-link text-dark" asp-controller="Productos" asp-action="Index">Productos</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Carritos" asp-action="Index">Carrito</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Pedidos" asp-action="Index">Envios</a>
                         </li>
                     </ul>
@@ -35,6 +38,8 @@
             </div>
         </nav>
     </header>
+    <div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

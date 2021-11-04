@@ -19,6 +19,21 @@ namespace Seguimiento.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Seguimiento.Models.Carrito", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("idProducto")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Carritos");
+                });
+
             modelBuilder.Entity("Seguimiento.Models.Cliente", b =>
                 {
                     b.Property<int>("id")
