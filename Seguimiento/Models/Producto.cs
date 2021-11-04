@@ -12,8 +12,11 @@ namespace Seguimiento.Models
         public int id { get; set; }
 
         [Required(ErrorMessage = "El nombre es un dato requerido")]
+
+        [StringLength(20)]
         public string nombre { get; set;}
 
+        [RegularExpression(@"[0-9]{4}", ErrorMessage = "Poner un precio válido para el producto")]
         public double precio { get; set; }
 
         [Required(ErrorMessage = "La cantidad es un dato requerido")]
