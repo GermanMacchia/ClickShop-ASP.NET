@@ -149,5 +149,24 @@ namespace Seguimiento.Controllers
         {
             return _context.Productos.Any(e => e.id == id);
         }
+
+        //---------------------------------------------------
+
+        public List<Producto> buscarProductos(List<int> id)
+        {
+            var consulta = from datos in _context.Productos where id.Contains(datos.id) select datos;
+            return consulta.ToList();
+        }
+
+        public List<Producto> GetProductos()
+        {
+            var consulta = from datos in _context.Productos select datos;
+            return consulta.ToList();
+        }
+
+
+       
+
+
     }
 }

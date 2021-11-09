@@ -1,35 +1,85 @@
 ﻿@model IEnumerable<Seguimiento.Models.Carrito>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<div class="imagen_superior">
 
-<h1>Index</h1>
+<h1 class="titulo">Carrito</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+ </div> 
+@*
+    <p>
+       <a asp-action="Create">Create New</a>
+    </p>
+*@
+
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.idProducto)
+                @Html.DisplayNameFor(model => model)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+            <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a> *@|
+                <a class="boton-link" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
+            </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.idProducto)
+                <hr />
+                <h6>CANTIDAD ARTICULOS</h6>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <p id="cantArt"></p>
             </td>
         </tr>
-}
-    </tbody>
+        <tr>
+            <td>
+                <hr />
+                <h6>SUBTOTAL</h6>
+            </td>
+            <td>
+                <p id="subtotal"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <hr />
+                <h6>ENVIO</h6>
+            </td>
+            <td>
+                <p id="envio"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <hr />
+                <h6 class="font-weight-bold">TOTAL</h6>
+            </td>
+            <td>
+                <p id="total"></p>
+            </td>
+        </tr>
+    </tfoot>
 </table>
+<hr />
+<a class="btn btn-success" asp-controller="Pedidos" asp-action="Create">Procesar Envío</a>
+
+
+
+

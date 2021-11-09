@@ -27,12 +27,15 @@
         <div class="col-lg-3">
             <div>
                 <div class="d-flex flex-row bd-highlight mb-3">
+                    @*
                     <div class="p-2 bd-highlight">
                         <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" />
-                    </div>
+                    </div>*@
+                    @*
                     <div class="p-2 bd-highlight">
                         <h2 style="padding-top: 2.8rem;">Carrito</h2>
                     </div>
+                    *@
                 </div>
                 <hr />
                 <br />
@@ -58,50 +61,11 @@
                             }
                         }
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6>CANTIDAD ARTICULOS</h6>
-                            </td>
-                            <td>
-                                <p id="cantArt"></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6>SUBTOTAL</h6>
-                            </td>
-                            <td>
-                                <p id="subtotal"></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6>ENVIO</h6>
-                            </td>
-                            <td>
-                                <p id="envio"></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6 class="font-weight-bold">TOTAL</h6>
-                            </td>
-                            <td>
-                                <p id="total"></p>
-                            </td>
-                        </tr>
-                    </tfoot>
                 </table>
                 <hr />
-
-                <button class="btn btn-success">Procesar Envío</button>
             </div>
         </div>
+
         @*TABLA*@
         <div class="col-sm-9">
             <table class="table">
@@ -142,15 +106,15 @@
                                     @Html.DisplayFor(modelItem => item.talle)
                                 </td>
                                 <td class="align-middle">
-                                    <button type="submit" name="boton" value=@item.id>
+                                    <button type="submit" name="boton" value= @item asp-controller="Carritos" asp-action="agregarProductos" asp-route-producto="@item">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                                             <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
                                         </svg>
                                     </button>
                                 </td>
                             </tr>
-                            }
-                     }
+                        }
+                    }
                 </tbody>
             </table>
         </div>

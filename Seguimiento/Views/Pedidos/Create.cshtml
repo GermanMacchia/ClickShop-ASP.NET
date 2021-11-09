@@ -3,18 +3,30 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@*
 <h4 class=" = titulos_creacion">Crear el envio</h4>
 
 <hr />
+*@
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="total" class="control-label, celdas"></label>
+                <input asp-for="total" class="form-control" />
+                <span asp-validation-for="total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="comentarios" class="control-label, celdas"></label>
                 <input asp-for="comentarios" class="form-control" />
                 <span asp-validation-for="comentarios" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="empleadoId" class="control-label, celdas"></label>
+                <input asp-for="empleadoId" class="form-control" />
+                <span asp-validation-for="empleadoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="fechaEnvio" class="control-label, celdas"></label>

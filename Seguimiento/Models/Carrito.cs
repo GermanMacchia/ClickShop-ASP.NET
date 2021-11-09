@@ -12,6 +12,7 @@ namespace Seguimiento.Models
         [Key]
         public int id { get; set; }
 
-        public int idProducto { get; set; }
+        public List<Producto> ListaProductos { get; set; }
+
     }
 }

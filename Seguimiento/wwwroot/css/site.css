@@ -114,6 +114,11 @@ body {
     background-position-y: center;
 }
 
+,imagen_principal {
+    background-image: url("../imagenes/fondoPrincipal.jpg");
+    background-position-x: center;
+}
+
 
 
 

@@ -31,6 +31,8 @@ namespace Seguimiento.Models
         [Required]
         public List<Producto> productos { get; set;}
 
+        [Required]
+        public double total { get; set; }
         public int direccionId { get; set;}
 
         public Estado estado { get;}
