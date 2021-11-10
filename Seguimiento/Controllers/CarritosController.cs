@@ -42,18 +42,23 @@ namespace Seguimiento.Controllers
             return View(carrito);
         }
 
-        // GET: Carritos/Create
-        public IActionResult Create()
+        //ACTION CUSTOM, EJECUTA Y LLAMA A INDEX DE HOME
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Crear([Bind("id, idProducto, idNombre, idPrecio, idTalle")] Carrito carrito)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _context.Add(carrito);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index", "Home", null);
         }
 
         // POST: Carritos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,idProducto")] Carrito carrito)
+        public async Task<IActionResult> Create([Bind("id, idProducto, idNombre, idPrecio, idTalle")] Carrito carrito)
         {
             if (ModelState.IsValid)
             {
@@ -81,11 +86,9 @@ namespace Seguimiento.Controllers
         }
 
         // POST: Carritos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,idProducto")] Carrito carrito)
+        public async Task<IActionResult> Edit(int id, [Bind("id, idProducto, idNombre, idPrecio, idTalle")] Carrito carrito)
         {
             if (id != carrito.id)
             {

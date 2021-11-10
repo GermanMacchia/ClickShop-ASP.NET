@@ -45,16 +45,16 @@
                             {
                                 <tr>
                                     <td class="align-middle">
-                                        @prod.nombre
+                                        @prod.idNombre
                                     </td>
-                                    <td style="padding-left: 1rem;" class="align-middle">
-                                        @prod.precio
-                                    </td>
+
                                     <td style="padding-left: 1.5rem;" class="align-middle">
-                                        @prod.talle
+                                        @prod.idPrecio
                                     </td>
                                 </tr>
-
+                                ViewBag.cont = ViewBag.cont + 1;
+                                ViewBag.sum = ViewBag.sum + prod.idPrecio;
+                                ViewBag.tot = ViewBag.sum + ViewBag.env;
                             }
                         }
                     </tbody>
@@ -64,8 +64,9 @@
                                 <hr />
                                 <h6>CANTIDAD ARTICULOS</h6>
                             </td>
-                            <td>
-                                <p id="cantArt"></p>
+                            <td class="align-middle" style="padding-left: 1.5rem;">
+                                <hr />
+                                <h6>@ViewBag.cont</h6>
                             </td>
                         </tr>
                         <tr>
@@ -73,8 +74,9 @@
                                 <hr />
                                 <h6>SUBTOTAL</h6>
                             </td>
-                            <td>
-                                <p id="subtotal"></p>
+                            <td class="align-middle" style="padding-left: 1.5rem;">
+                                <hr />
+                                <h6>@ViewBag.sum</h6>
                             </td>
                         </tr>
                         <tr>
@@ -82,8 +84,9 @@
                                 <hr />
                                 <h6>ENVIO</h6>
                             </td>
-                            <td>
-                                <p id="envio"></p>
+                            <td class="align-middle" style="padding-left: 1.5rem;">
+                                <hr />
+                                <h6>@ViewBag.env</h6>
                             </td>
                         </tr>
                         <tr>
@@ -91,11 +94,12 @@
                                 <hr />
                                 <h6 class="font-weight-bold">TOTAL</h6>
                             </td>
-                            <td>
-                                <p id="total"></p>
+                            <td class="align-middle" style="padding-left: 1.5rem;">
+                                <hr />
+                                <h6 class="font-weight-bold">@ViewBag.tot</h6>
                             </td>
                         </tr>
-                    </tfoot>
+                    </tfoot>                      
                 </table>
                 <hr />
 
@@ -124,33 +128,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @using (Html.BeginForm("create", "Carritos"))
-                    {
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
-                                </td>
-                                <td class="align-middle">
-                                    @Html.DisplayFor(modelItem => item.nombre)
-                                </td>
-                                <td class="align-middle">
-                                    @Html.DisplayFor(modelItem => item.precio)
-                                </td>
-                                <td class="align-middle">
-                                    @Html.DisplayFor(modelItem => item.talle)
-                                </td>
-                                <td class="align-middle">
-                                    <button type="submit" name="boton" value=@item.id>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            }
-                     }
+               @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.precio)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.talle)
+                        </td>
+                            @using (Html.BeginForm("Crear", "Carritos"))
+                             {
+                        <td class="align-middle">
+                            <input type="hidden" name="idProducto" value=@item.id />
+                            <input type="hidden" name="idNombre" value=@item.nombre />
+                            <input type="hidden" name="idPrecio" value=@item.precio />
+                            <input type="hidden" name="idTalle" value=@item.talle />
+                        <button type="submit" name="boton">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                            </svg>
+                        </button>
+                    </td>
+                             }
+                        </tr>                     
+                }
                 </tbody>
             </table>
         </div>

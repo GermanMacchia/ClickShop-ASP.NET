@@ -19,23 +19,24 @@ namespace Seguimiento.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly SeguimientoContext _context;
 
-
         public HomeController(ILogger<HomeController> logger, SeguimientoContext context)
         {
             _logger = logger;
             _context = context;
         }
-        
+
 
         public async Task<IActionResult> Index()
         {
             var empleados = await _context.Empleados.ToListAsync();
             ViewBag.emp = empleados;
-
+            ViewBag.cont = 0;
+            ViewBag.sum = 0;
+            ViewBag.env = 500;
+            ViewBag.tot = 0;
+            ViewBag.carr = await _context.Carritos.ToListAsync();
             return View(await _context.Productos.ToListAsync());     
         }
-
-
 
 
 

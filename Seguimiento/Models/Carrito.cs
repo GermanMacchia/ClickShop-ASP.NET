@@ -13,5 +13,12 @@ namespace Seguimiento.Models
         public int id { get; set; }
 
         public int idProducto { get; set; }
+
+        [StringLength(20)]
+        public string idNombre { get; set; }
+
+        public int idTalle { get; set; }
+
+        public double idPrecio { get; set; }
     }
 }
