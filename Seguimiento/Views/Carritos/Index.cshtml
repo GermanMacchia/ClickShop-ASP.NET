@@ -4,11 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="imagen_superior">
+    <h1 class="titulo">Carrito</h1>
+    <div class="d-flex p-0 bd-highlight">
+        <a class="boton-link" asp-action="Procesar" style="color:forestgreen;">Procesar Envio</a>
+        <p style="margin: 0px 10px 0px 10px; margin-bottom: 1rem"> || </p>
+        <a class="boton-link" asp-action="DeleteAll" style="color:orangered;"> Eliminar Carrito</a>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -35,7 +38,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.idNombre)
             </td>
-            <td>
+            <td style="text-align: right;">
                 @Html.DisplayFor(modelItem => item.idPrecio)
             </td>
             <td>

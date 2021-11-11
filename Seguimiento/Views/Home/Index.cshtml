@@ -1,174 +1,159 @@
 @model IEnumerable<Seguimiento.Models.Producto>
 
 <body>
+    <div class="d-flex justify-content-between imagen_superior">
 
-<div class="d-flex justify-content-between">
+        <div class="p-3 bd-highlight" >
+            <select style="width:13rem;" class="form-select form-control-md">
 
-    <div class="p-3 bd-highlight" >
-        <select style="width:13rem;" class="form-select form-control-md">
+                <option  selected>Login</option>
 
-            <option  selected>Login</option>
-
-            @foreach (var e in ViewBag.emp)
-            {
-                <option value="@e.legajo">@e.nombre @e.apellido</option>
-            }
-        </select>
+                @foreach (var e in ViewBag.emp)
+                {
+                    <option value="@e.legajo">@e.nombre @e.apellido</option>
+                }
+            </select>
+        </div>
     </div>
 
-    <div class="p-3 bd-highlight">
-        <h1 class="display-6 titulo" style="color:lightseagreen "> Administrador de Envios</h1>
-    </div>
-</div>
-
-<div>
-    <div class="row ">
+    <div>
+        <div class="row ">
         @*CARRITO*@
-        <div class="col-lg-3">
-            <div>
-                <div class="d-flex flex-row bd-highlight mb-3">
-                    <div class="p-2 bd-highlight">
-                        <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" />
+            <div class="col-lg-3 overflow-scroll">
+                <div>
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 bd-highlight">
+                            <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" />
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <h2 style="padding-top: 2.8rem;">Carrito</h2>
+                        </div>
                     </div>
-                    <div class="p-2 bd-highlight">
-                        <h2 style="padding-top: 2.8rem;">Carrito</h2>
-                    </div>
-                </div>
-                <hr />
-                <br />
-                <table class="overflow-scroll">
+                    <hr />
+                    <br />
+                    <table>
                     @*ACA DESPLIEGUE*@
-                    <tbody id="carrito">
-                        @if (ViewBag.carr != null)
-                        {
-                            foreach (var prod in ViewBag.carr)
+                        <tbody>
+                            @if (ViewBag.carr != null)
                             {
-                                <tr>
-                                    <td class="align-middle">
-                                        @prod.idNombre
-                                    </td>
+                                foreach (var prod in ViewBag.carr)
+                                {
+                                    <tr>
+                                        <td class="align-middle">
+                                            @prod.idNombre
+                                        </td>
 
-                                    <td style="padding-left: 1.5rem;" class="align-middle">
-                                        @prod.idPrecio
-                                    </td>
-                                </tr>
-                                ViewBag.cont = ViewBag.cont + 1;
-                                ViewBag.sum = ViewBag.sum + prod.idPrecio;
-                                ViewBag.tot = ViewBag.sum + ViewBag.env;
+                                        <td style="padding-left: 3.5rem; text-align: right;" >
+                                            @prod.idPrecio
+                                        </td>
+                                    </tr>
+                                    ViewBag.cont = ViewBag.cont + 1;
+                                    ViewBag.sum = ViewBag.sum + prod.idPrecio;
+                                    ViewBag.tot = ViewBag.sum + ViewBag.env;
+                                }
                             }
-                        }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6>CANTIDAD ARTICULOS</h6>
+                                </td>
+                                <td class="align-middle" style="padding-left: 3.5rem; text-align: right;">
+                                    <hr />
+                                    <h6>@ViewBag.cont</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6>SUBTOTAL</h6>
+                                </td>
+                                <td class="align-middle" style="padding-left: 3.5rem; text-align: right;">
+                                    <hr />
+                                    <h6>@ViewBag.sum</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6>ENVIO</h6>
+                                </td>
+                                <td class="align-middle" style="padding-left: 3.5rem; text-align: right;">
+                                    <hr />
+                                    <h6>@ViewBag.env</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                    <h6 class="font-weight-bold">TOTAL</h6>
+                                </td>
+                                <td class="align-middle" style="padding-left: 3.5rem; text-align: right;">
+                                    <hr />
+                                    <h6 class="font-weight-bold">@ViewBag.tot</h6>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        </table>
+                    </div>
+            </div>
+            @*TABLA*@
+            <div class="col-sm-9">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="celdas">
+                                @Html.DisplayNameFor(model => model.imagen).ToUpper()
+                            </th>
+                            <th class="celdas">
+                                @Html.DisplayNameFor(model => model.nombre).ToUpper()
+                            </th>
+                            <th class="celdas">
+                                @Html.DisplayNameFor(model => model.precio).ToUpper()
+                            </th>
+                            <th class="celdas">
+                                @Html.DisplayNameFor(model => model.talle).ToUpper()
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                   @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.nombre)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.precio)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.talle)
+                            </td>
+                           @using (Html.BeginForm("Crear", "Carritos"))
+                            {
+                            <td class="align-middle">
+                                <input type="hidden" name="idProducto" value=@item.id />
+                                <input type="hidden" name="idNombre" value="@item.nombre" />
+                                <input type="hidden" name="idPrecio" value=@item.precio />
+                                <input type="hidden" name="idTalle" value=@item.talle />
+                            <button type="submit" name="boton">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                </svg>
+                            </button>
+                            </td>
+                            }
+                        </tr>                     
+                    }
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6>CANTIDAD ARTICULOS</h6>
-                            </td>
-                            <td class="align-middle" style="padding-left: 1.5rem;">
-                                <hr />
-                                <h6>@ViewBag.cont</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6>SUBTOTAL</h6>
-                            </td>
-                            <td class="align-middle" style="padding-left: 1.5rem;">
-                                <hr />
-                                <h6>@ViewBag.sum</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6>ENVIO</h6>
-                            </td>
-                            <td class="align-middle" style="padding-left: 1.5rem;">
-                                <hr />
-                                <h6>@ViewBag.env</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr />
-                                <h6 class="font-weight-bold">TOTAL</h6>
-                            </td>
-                            <td class="align-middle" style="padding-left: 1.5rem;">
-                                <hr />
-                                <h6 class="font-weight-bold">@ViewBag.tot</h6>
-                            </td>
-                        </tr>
-                    </tfoot>                      
                 </table>
-                <hr />
-
-                <button class="btn btn-success">Procesar Envío</button>
             </div>
         </div>
-        @*TABLA*@
-        <div class="col-sm-9">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="celdas">
-                            @Html.DisplayNameFor(model => model.imagen).ToUpper()
-                        </th>
-                        <th class="celdas">
-                            @Html.DisplayNameFor(model => model.nombre).ToUpper()
-                        </th>
-                        <th class="celdas">
-                            @Html.DisplayNameFor(model => model.precio).ToUpper()
-                        </th>
-                        <th class="celdas">
-                            @Html.DisplayNameFor(model => model.talle).ToUpper()
-                        </th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-               @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.nombre)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.precio)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.talle)
-                        </td>
-                            @using (Html.BeginForm("Crear", "Carritos"))
-                             {
-                        <td class="align-middle">
-                            <input type="hidden" name="idProducto" value=@item.id />
-                            <input type="hidden" name="idNombre" value="@item.nombre" />
-                            <input type="hidden" name="idPrecio" value=@item.precio />
-                            <input type="hidden" name="idTalle" value=@item.talle />
-                        <button type="submit" name="boton">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                            </svg>
-                        </button>
-                    </td>
-                             }
-                        </tr>                     
-                }
-                </tbody>
-            </table>
-        </div>
     </div>
-</div>
 </body>
-
-    @*{
-            void agregarProducto( Producto p )
-            {
-                ViewBag.carr.add(p);
-            }
-        }*@

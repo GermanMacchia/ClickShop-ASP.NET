@@ -55,7 +55,16 @@ namespace Seguimiento.Controllers
             return RedirectToAction("Index", "Home", null);
         }
 
-        // POST: Carritos/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteAll()
+        {
+
+            return RedirectToAction("Index", "Carritos", null);
+        }
+
+
+        /* POST: Carritos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id, idProducto, idNombre, idPrecio, idTalle")] Carrito carrito)
@@ -67,7 +76,7 @@ namespace Seguimiento.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(carrito);
-        }
+        }*/
 
         // GET: Carritos/Edit/5
         public async Task<IActionResult> Edit(int? id)
