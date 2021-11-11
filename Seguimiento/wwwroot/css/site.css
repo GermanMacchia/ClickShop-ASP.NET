@@ -59,9 +59,9 @@ html {
 }
 
 body {
-    margin-bottom: 80px;
-    background-image: url("../imagenes/fondoPrincipal.jpg"); 
-    background-repeat: no-repeat;
+    /*margin-bottom: 80px;
+   background-image: url("../imagenes/fondoPrincipal.jpg"); 
+    background-repeat: no-repeat;*/
 }
 .footer {
   position: absolute;
