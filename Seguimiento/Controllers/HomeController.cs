@@ -25,7 +25,7 @@ namespace Seguimiento.Controllers
             _context = context;
         }
 
-
+        // ESTE ES UN NUEVO CAMBIO 
         public async Task<IActionResult> Index()
         {
             var empleados = await _context.Empleados.ToListAsync();
