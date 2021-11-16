@@ -59,24 +59,17 @@ namespace Seguimiento.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteAll()
         {
+            var lista = await _context.Carritos.ToListAsync();
+            foreach(var i in lista)
+            {
+                var carrito = await _context.Carritos.FindAsync(i.id);
+                _context.Carritos.Remove(carrito);
+                await _context.SaveChangesAsync();
+            }
 
-            return RedirectToAction("Index", "Carritos", null);
+            return View("Index");
         }
 
-
-        /* POST: Carritos/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id, idProducto, idNombre, idPrecio, idTalle")] Carrito carrito)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(carrito);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(carrito);
-        }*/
 
         // GET: Carritos/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -148,12 +141,12 @@ namespace Seguimiento.Controllers
         // POST: Carritos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             var carrito = await _context.Carritos.FindAsync(id);
             _context.Carritos.Remove(carrito);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home", null);
         }
 
         private bool CarritoExists(int id)

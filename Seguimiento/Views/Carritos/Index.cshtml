@@ -15,17 +15,17 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.idProducto)
+            <th class="celdas">
+                @Html.DisplayNameFor(model => model.idProducto).ToUpper()
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idNombre)
+            <th class="celdas">
+                NOMBRE
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idPrecio)
+            <th class="celdas">
+                PRECIO
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idTalle)
+            <th class="celdas">
+                TALLE
             </th>
         </tr>
     </thead>
@@ -38,16 +38,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.idNombre)
             </td>
-            <td style="text-align: right;">
+            <td>
                 @Html.DisplayFor(modelItem => item.idPrecio)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.idTalle)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
             </td>
         </tr>
 }
