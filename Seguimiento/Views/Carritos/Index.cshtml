@@ -7,70 +7,110 @@
 <div class="imagen_superior">
     <h1 class="titulo">Carrito</h1>
     <div class="d-flex p-0 bd-highlight">
-        @using (Html.BeginForm("Procesar", "Carritos"))
+        @using (Html.BeginForm("Crear", "Pedidos"))
         {
             <button class="btn btn-link" type="submit" style="color: forestgreen; padding: 0px; margin-bottom: 1rem">Procesar Envio</button>
         }
-        <p style="margin: 0px 10px 0px 10px;"> || </p>
-        <button class="btn btn-link" data-toggle="modal" data-target="#myModal" style="color: orangered; padding: 0px; margin-bottom: 1rem">
-            Eliminar Carrito
-        </button>
+            <p style="margin: 0px 10px 0px 10px;"> || </p>
+            <button class="btn btn-link" data-toggle="modal" data-target="#myModal" style="color: orangered; padding: 0px; margin-bottom: 1rem">
+                Eliminar Carrito
+            </button>
     </div>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th class="celdas">
-                @Html.DisplayNameFor(model => model.idProducto).ToUpper()
-            </th>
-            <th class="celdas">
-                NOMBRE
-            </th>
-            <th class="celdas">
-                PRECIO
-            </th>
-            <th class="celdas">
-                TALLE
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null)
+<div class="row">
+    <div class="col-lg-4">
+        <br />
+        @using (Html.BeginForm("Crear", "Pedidos"))
         {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.idProducto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.idNombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.idPrecio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.idTalle)
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>¿Esta Seguro que desea eliminar el carrito?</p>
-            </div>
-            <div class="modal-footer">
-                @using (Html.BeginForm("DeleteAll", "Carritos"))
+            <label><strong>FECHA DE HOY</strong></label><br />
+            <input type="date" name="fechaInicio" /><br /><hr />
+            <label><strong>ENCARGADO DE ENVÍO</strong></label><br />
+            <select name="empleadoId" style="width:13rem;" class="form-select form-control-md">
+                <option selected>Login</option>
+                @if (ViewBag.emp != null)
                 {
-                    <button type="submit" class="btn btn-danger" >Eliminar</button>
+                    foreach (var e in ViewBag.emp)
+                    {
+                        <option value="@e.legajo">@e.nombre @e.apellido</option>
+                    }
                 }
+            </select>
+            <hr />
+            <label><strong>CLIENTE</strong></label><br />
+            <select name="clienteId" style="width:13rem;" class="form-select form-control-md">
+                <option selected>Cliente</option>
+                @if (ViewBag.cli != null)
+                {
+                    foreach (var c in ViewBag.cli)
+                    {
+                        <option value="@c.id">@c.nombre @c.apellido</option>
+                    }
+                }
+            </select><br />
+            <hr />
+            <label><strong>COMENTARIOS</strong></label><br />
+            <textarea name="comentarios" style="height:110px; width:auto;"></textarea>
+            <input type="hidden" name="productos" value=@Model.ToList()>
+            <button class="btn btn-link" type="submit" style="color: forestgreen; padding: 0px; margin-bottom: 1rem">Procesar Envio</button>
+        }
+    </div>
+    <div class="col-sm-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="celdas">
+                        @Html.DisplayNameFor(model => model.idProducto).ToUpper()
+                    </th>
+                    <th class="celdas">
+                        NOMBRE
+                    </th>
+                    <th class="celdas">
+                        PRECIO
+                    </th>
+                    <th class="celdas">
+                        TALLE
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idProducto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idNombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idPrecio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idTalle)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Esta seguro que desea eliminar el carrito?</p>
+                    </div>
+                    <div class="modal-footer">
+                        @using (Html.BeginForm("DeleteAll", "Carritos"))
+                        {
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -42,11 +42,21 @@ namespace Seguimiento.Controllers
             return View(pedido);
         }
 
-        // GET: Pedidos/Create
-        public IActionResult Create()
+        // POST: Pedidos/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Crear([Bind("nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _context.Add(pedido);
+                await _context.SaveChangesAsync();
+            }
+            return View("Index");
         }
+
 
         // POST: Pedidos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

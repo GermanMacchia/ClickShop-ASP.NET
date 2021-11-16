@@ -35,6 +35,7 @@ html {
   }
 }
 
+
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -111,6 +112,9 @@ body {
 .imagen_superior {
     background-image: url("../imagenes/ondas.jpg");
     background-position-y: center;
+    border-bottom: solid 1.5px;
+    border-color: lightgrey;
+    
 }
 
 

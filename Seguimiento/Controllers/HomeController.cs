@@ -27,8 +27,6 @@ namespace Seguimiento.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var empleados = await _context.Empleados.ToListAsync();
-            ViewBag.emp = empleados;
             ViewBag.cont = 0;
             ViewBag.sum = 0;
             ViewBag.env = 500;

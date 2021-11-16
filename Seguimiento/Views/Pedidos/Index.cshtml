@@ -31,30 +31,33 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @if (Model != null)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fechaInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.estado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.empleadoId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fechaEnvio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.comentarios)
-                </td>
-                <td>
-                    <a class="boton-link" asp-action="Edit" asp-route-id="@item.nroTraking">Editar</a> |
-                    <a class="boton-link" asp-action="Details" asp-route-id="@item.nroTraking">Detalles</a> |
-                    <a class="boton-link" asp-action="Delete" asp-route-id="@item.nroTraking">Borrar</a>
-                </td>
-            </tr>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechaInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empleadoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechaEnvio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.comentarios)
+                    </td>
+                    <td>
+                        <a class="boton-link" asp-action="Edit" asp-route-id="@item.nroTraking">Editar</a> |
+                        <a class="boton-link" asp-action="Details" asp-route-id="@item.nroTraking">Detalles</a> |
+                        <a class="boton-link" asp-action="Delete" asp-route-id="@item.nroTraking">Borrar</a>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

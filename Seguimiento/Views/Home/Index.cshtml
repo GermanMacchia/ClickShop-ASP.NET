@@ -2,17 +2,10 @@
 
 <body>
     <div class="d-flex justify-content-between imagen_superior">
-
-        <div class="p-3 bd-highlight" >
-            <select style="width:13rem;" class="form-select form-control-md">
-
-                <option  selected>Login</option>
-
-                @foreach (var e in ViewBag.emp)
-                {
-                    <option value="@e.legajo">@e.nombre @e.apellido</option>
-                }
-            </select>
+        <div class="p-3 bd-highlight" style="height: 80px;">
+            <div class="p-1 bd-highlight">
+                <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" style="margin-top: -28px;border: none;" />
+            </div>
         </div>
     </div>
 
@@ -21,16 +14,11 @@
         @*CARRITO*@
             <div class="col-lg-4">
                 <div>
-                    <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="d-flex flex-row bd-highlight mb-3" style="border-bottom: solid 2px; border-color: lightgrey">
                         <div class="p-2 bd-highlight">
-                            <img src="./imagenes/basket.png" class="img-thumbnail" alt="Carrito" />
-                        </div>
-                        <div class="p-2 bd-highlight">
-                            <h2 style="padding-top: 2.8rem;">Carrito</h2>
+                            <h4 class="celdas" >Carrito</h4>
                         </div>
                     </div>
-                    <hr />
-                    <br />
                     <table>
                     @*ACA DESPLIEGUE*@
                         <tbody>
@@ -111,21 +99,21 @@
             @*TABLA*@
             <div class="col-sm-8">
                 <table class="table">
-                    <thead>
+                    <thead style="height: 3.5rem;">
                         <tr>
-                            <th class="celdas">
+                            <th class="celdas" style="border-top: none;">
                                 @Html.DisplayNameFor(model => model.imagen).ToUpper()
                             </th>
-                            <th class="celdas">
+                            <th class="celdas" style="border-top: none;">
                                 @Html.DisplayNameFor(model => model.nombre).ToUpper()
                             </th>
-                            <th class="celdas">
+                            <th class="celdas" style="border-top: none;">
                                 @Html.DisplayNameFor(model => model.precio).ToUpper()
                             </th>
-                            <th class="celdas">
+                            <th class="celdas" style="border-top: none;">
                                 @Html.DisplayNameFor(model => model.talle).ToUpper()
                             </th>
-                            <th>
+                            <th style="border-top: none;">
                             </th>
                         </tr>
                     </thead>

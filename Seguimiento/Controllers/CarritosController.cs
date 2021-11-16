@@ -21,6 +21,10 @@ namespace Seguimiento.Controllers
         // GET: Carritos
         public async Task<IActionResult> Index()
         {
+            var empleados = await _context.Empleados.ToListAsync();
+            var clientes = await _context.Clientes.ToListAsync();
+            ViewBag.emp = empleados;
+            ViewBag.cli = clientes;
             return View(await _context.Carritos.ToListAsync());
         }
 
