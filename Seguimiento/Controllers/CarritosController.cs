@@ -23,8 +23,10 @@ namespace Seguimiento.Controllers
         {
             var empleados = await _context.Empleados.ToListAsync();
             var clientes = await _context.Clientes.ToListAsync();
+            var listado = await _context.Carritos.ToListAsync();
             ViewBag.emp = empleados;
             ViewBag.cli = clientes;
+            ViewBag.prod = listado;
             return View(await _context.Carritos.ToListAsync());
         }
 

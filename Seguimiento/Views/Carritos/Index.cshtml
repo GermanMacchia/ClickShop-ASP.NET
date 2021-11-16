@@ -7,10 +7,9 @@
 <div class="imagen_superior">
     <h1 class="titulo">Carrito</h1>
     <div class="d-flex p-0 bd-highlight">
-        @using (Html.BeginForm("Crear", "Pedidos"))
-        {
-            <button class="btn btn-link" type="submit" style="color: forestgreen; padding: 0px; margin-bottom: 1rem">Procesar Envio</button>
-        }
+            <button class="btn btn-link" data-toggle="modal" data-target="#procesar" style="color: forestgreen; padding: 0px; margin-bottom: 1rem">
+                Procesar Envio
+            </button>
             <p style="margin: 0px 10px 0px 10px;"> || </p>
             <button class="btn btn-link" data-toggle="modal" data-target="#myModal" style="color: orangered; padding: 0px; margin-bottom: 1rem">
                 Eliminar Carrito
@@ -23,7 +22,7 @@
         @using (Html.BeginForm("Crear", "Pedidos"))
         {
             <label><strong>FECHA DE HOY</strong></label><br />
-            <input type="date" name="fechaInicio" /><br /><hr />
+            <input type="datetime-local" name="fechaInicio" /><br /><hr />
             <label><strong>ENCARGADO DE ENVÍO</strong></label><br />
             <select name="empleadoId" style="width:13rem;" class="form-select form-control-md">
                 <option selected>Login</option>
@@ -50,8 +49,23 @@
             <hr />
             <label><strong>COMENTARIOS</strong></label><br />
             <textarea name="comentarios" style="height:110px; width:auto;"></textarea>
-            <input type="hidden" name="productos" value=@Model.ToList()>
-            <button class="btn btn-link" type="submit" style="color: forestgreen; padding: 0px; margin-bottom: 1rem">Procesar Envio</button>
+            <input type="hidden" name="productos" value=@ViewBag.prod>
+            @*MODAL*@
+            <div id="procesar" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Confirma que desea procesar el carrito?</p>
+                        </div>
+                        <div class="modal-footer">
+                             <button type="submit" class="btn btn-success">Procesar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     </div>
     <div class="col-sm-8">

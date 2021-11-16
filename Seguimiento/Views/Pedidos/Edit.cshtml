@@ -11,10 +11,15 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="nroTraking" />
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="nroTraking" class="control-label"></label>
+                <input asp-for="nroTraking" class="form-control" />
+                <span asp-validation-for="nroTraking" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="comentarios" class="control-label"></label>
-                <input asp-for="comentarios" class="form-control" />
+                <textarea asp-for="comentarios" class="form-control"> </textarea>
                 <span asp-validation-for="comentarios" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,11 +34,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="estado" class="control-label"></label>
-                <select asp-for="estado" class="form-control"></select>
+                <select asp-for="estado" class="form-control">
+                    <option value="0">PENDIENTE</option>
+                    <option value="1">PREPARADO / PAGADO </option>
+                    <option value="2">PREPARADO / ADEUDA </option>
+                    <option value="3">ENVIADO</option>
+                    <option value="4">RECIBIDO</option>
+                </select>
                 <span asp-validation-for="estado" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </form>
     </div>

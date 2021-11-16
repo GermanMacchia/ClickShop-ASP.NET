@@ -21,6 +21,10 @@ namespace Seguimiento.Controllers
         // GET: Pedidos
         public async Task<IActionResult> Index()
         {
+            var empleados = await _context.Empleados.ToListAsync();
+            var clientes = await _context.Clientes.ToListAsync();
+            ViewBag.emp = empleados;
+            ViewBag.cli = clientes;
             return View(await _context.Pedidos.ToListAsync());
         }
 
@@ -33,7 +37,7 @@ namespace Seguimiento.Controllers
             }
 
             var pedido = await _context.Pedidos
-                .FirstOrDefaultAsync(m => m.nroTraking == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (pedido == null)
             {
                 return NotFound();
@@ -47,14 +51,21 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Crear([Bind("nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
+        public async Task<ActionResult> Crear([Bind("empleadoId, clienteId, productos, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(pedido);
                 await _context.SaveChangesAsync();
             }
-            return View("Index");
+
+            var lista = await _context.Carritos.ToListAsync();
+            foreach (var i in lista)
+            {
+                _context.Carritos.Remove(i);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index", "Home", null);
         }
 
 
@@ -81,7 +92,6 @@ namespace Seguimiento.Controllers
             {
                 return NotFound();
             }
-
             var pedido = await _context.Pedidos.FindAsync(id);
             if (pedido == null)
             {
@@ -95,9 +105,9 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("id, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
         {
-            if (id != pedido.nroTraking)
+            if (id != pedido.id)
             {
                 return NotFound();
             }
@@ -111,7 +121,7 @@ namespace Seguimiento.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PedidoExists(pedido.nroTraking))
+                    if (!PedidoExists(pedido.id))
                     {
                         return NotFound();
                     }
@@ -134,7 +144,7 @@ namespace Seguimiento.Controllers
             }
 
             var pedido = await _context.Pedidos
-                .FirstOrDefaultAsync(m => m.nroTraking == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (pedido == null)
             {
                 return NotFound();
@@ -156,7 +166,7 @@ namespace Seguimiento.Controllers
 
         private bool PedidoExists(int id)
         {
-            return _context.Pedidos.Any(e => e.nroTraking == id);
+            return _context.Pedidos.Any(e => e.id == id);
         }
     }
 }

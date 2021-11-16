@@ -5,10 +5,6 @@
 }
 
 <h1 class="titulo imagen_superior">Envios</h1>
-@*
-<p>
-    <a class="boton-link" asp-action="Create">Crear un envio</a>
-</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -19,45 +15,65 @@
                 @Html.DisplayNameFor(model => model.estado).ToUpper()
             </th>
             <th class="celdas">
-                @Html.DisplayNameFor(model => model.empleadoId).ToUpper()
+                ENCARGADO
             </th>
             <th class="celdas">
                 @Html.DisplayNameFor(model => model.fechaEnvio).ToUpper()
             </th>
-
+            <th class="celdas">
+                CLIENTE
+            </th>
             <th class="celdas">
                 @Html.DisplayNameFor(model => model.comentarios).ToUpper()
             </th>
         </tr>
     </thead>
     <tbody>
-        @if (Model != null)
-        {
-            foreach (var item in Model)
+         @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.fechaInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.estado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.empleadoId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.fechaEnvio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.comentarios)
-                    </td>
-                    <td>
-                        <a class="boton-link" asp-action="Edit" asp-route-id="@item.nroTraking">Editar</a> |
-                        <a class="boton-link" asp-action="Details" asp-route-id="@item.nroTraking">Detalles</a> |
-                        <a class="boton-link" asp-action="Delete" asp-route-id="@item.nroTraking">Borrar</a>
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @if (ViewBag.emp != null)
+                {
+                    foreach (var e in ViewBag.emp)
+                    {
+                        if (item.empleadoId == e.legajo)
+                        {
+                            <p>@e.nombre @e.apellido</p> 
+                        }
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEnvio)
+            </td>
+            <td>
+                @if (ViewBag.cli != null)
+                {
+                    foreach (var e in ViewBag.cli)
+                    {
+                        if (item.clienteId == e.id)
+                        {
+                            <p>@e.nombre @e.apellido</p>
+                        }
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comentarios)
+            </td>
+            <td>
+                <a class="boton-link" asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a class="boton-link" asp-action="Details" asp-route-id="@item.id">Detalles</a> |
+                <a class="boton-link" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
+            </td>
+        </tr>
             }
-        }
     </tbody>
 </table>
