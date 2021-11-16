@@ -62,8 +62,7 @@ namespace Seguimiento.Controllers
             var lista = await _context.Carritos.ToListAsync();
             foreach(var i in lista)
             {
-                var carrito = await _context.Carritos.FindAsync(i.id);
-                _context.Carritos.Remove(carrito);
+                _context.Carritos.Remove(i);
                 await _context.SaveChangesAsync();
             }
 

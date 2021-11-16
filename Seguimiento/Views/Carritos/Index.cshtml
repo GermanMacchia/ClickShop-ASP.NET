@@ -7,9 +7,14 @@
 <div class="imagen_superior">
     <h1 class="titulo">Carrito</h1>
     <div class="d-flex p-0 bd-highlight">
-        <a class="boton-link" asp-action="Procesar" style="color:forestgreen;">Procesar Envio</a>
-        <p style="margin: 0px 10px 0px 10px; margin-bottom: 1rem"> || </p>
-        <a class="boton-link" asp-action="DeleteAll" style="color:orangered;"> Eliminar Carrito</a>
+        @using (Html.BeginForm("Procesar", "Carritos"))
+        {
+            <button class="btn btn-link" type="submit" style="color: forestgreen; padding: 0px; margin-bottom: 1rem">Procesar Envio</button>
+        }
+        <p style="margin: 0px 10px 0px 10px;"> || </p>
+        <button class="btn btn-link" data-toggle="modal" data-target="#myModal" style="color: orangered; padding: 0px; margin-bottom: 1rem">
+            Eliminar Carrito
+        </button>
     </div>
 </div>
 <table class="table">
@@ -30,21 +35,49 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.idProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.idNombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.idPrecio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.idTalle)
-            </td>
-        </tr>
-}
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idPrecio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idTalle)
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta Seguro que desea eliminar el carrito?</p>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("DeleteAll", "Carritos"))
+                {
+                    <button type="submit" class="btn btn-danger" >Eliminar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
