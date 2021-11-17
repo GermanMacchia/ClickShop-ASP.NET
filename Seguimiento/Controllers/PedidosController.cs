@@ -23,8 +23,12 @@ namespace Seguimiento.Controllers
         {
             var empleados = await _context.Empleados.ToListAsync();
             var clientes = await _context.Clientes.ToListAsync();
+            var productos = await _context.Productos.ToListAsync();
+            var compra = await _context.Compras.ToListAsync();
             ViewBag.emp = empleados;
             ViewBag.cli = clientes;
+            ViewBag.prod = productos;
+            ViewBag.comp = compra;
             return View(await _context.Pedidos.ToListAsync());
         }
 
@@ -64,7 +68,7 @@ namespace Seguimiento.Controllers
 
             foreach (var i in lista)
             {
-                Compra c = new Compra(pedido.id, i.id );
+                Compra c = new Compra(pedido.id, i.idProducto);
                 _context.Compras.Add(c);
                 await _context.SaveChangesAsync();
             }

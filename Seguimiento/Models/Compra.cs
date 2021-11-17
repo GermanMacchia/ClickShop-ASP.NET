@@ -9,7 +9,6 @@ namespace Seguimiento.Models
     public class Compra
     {
 
-
         [Key]
         public int id { get; set; }
 

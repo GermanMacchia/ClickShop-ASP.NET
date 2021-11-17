@@ -29,57 +29,141 @@
             <th class="celdas">
                 @Html.DisplayNameFor(model => model.nroTraking).ToUpper()
             </th>
+            <th>
+
+            </th>
         </tr>
     </thead>
     <tbody>
-         @foreach (var item in Model)
-            {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.fechaInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                @if (ViewBag.emp != null)
-                {
-                    foreach (var e in ViewBag.emp)
-                    {
-                        if (item.empleadoId == e.legajo)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaInicio)
+                </td>
+                <td>
+                    @{
+                        switch (item.estado)
                         {
-                            <p>@e.nombre @e.apellido</p>
+                            case Estado.Pendiente:
+                                <p style="color: orangered; font-weight: bold;">PENDIENTE</p>
+                                break;
+                            case Estado.Preparado_ya_pago:
+                                <p style="color: darkolivegreen ; font-weight: bold;">PREPARADO / PAGADO</p>
+                                break;
+                            case Estado.preparado_no_pago:
+                                <p style="color: indianred ; font-weight: bold;">PREPARADO / ADEUDA</p>
+                                break;
+                            case Estado.Enviado:
+                                <p style="color: limegreen ; font-weight: bold;">ENVIADO</p>
+                                break;
+                            case Estado.Recibido:
+                                <p style="color: darkslateblue ; font-weight: bold;">RECIBIDO</p>
+                                break;
+                            default:
+                                <p>SIN ESTADO</p>
+                                    break;
                         }
                     }
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fechaEnvio)
-            </td>
-            <td>
-                @if (ViewBag.cli != null)
-                {
-                    foreach (var e in ViewBag.cli)
+                </td>
+                <td>
+                    @if (ViewBag.emp != null)
                     {
-                        if (item.clienteId == e.id)
+                        foreach (var e in ViewBag.emp)
                         {
-                            <p>@e.nombre @e.apellido</p>
+                            if (item.empleadoId == e.legajo)
+                            {
+                                <p>@e.nombre @e.apellido</p>
+                            }
                         }
                     }
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.comentarios)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nroTraking)
-            </td>
-            <td>
-                <a class="boton-link" asp-action="Edit" asp-route-id="@item.id">Editar</a> |
-                <a class="boton-link" asp-action="Details" asp-route-id="@item.id">Detalles</a> |
-                <a class="boton-link" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
-            </td>
-        </tr>
-            }
+                </td>
+                <td>
+                    @if (item.fechaEnvio == DateTime.MinValue)
+                    {
+                    <p style="color: orangered; font-weight: bold;">SIN ASIGNAR</p>
+                    }
+                    else
+                    {
+                        @item.fechaEnvio
+                    }
+                </td>
+                <td>
+                    @if (ViewBag.cli != null)
+                    {
+                        foreach (var e in ViewBag.cli)
+                        {
+                            if (item.clienteId == e.id)
+                            {
+                                <p>@e.nombre @e.apellido</p>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comentarios)
+                </td>
+                <td>
+                    @if (item.nroTraking == 0)
+                    {
+                        <p style="color: orangered; font-weight: bold;">SIN ASIGNAR</p>
+                    }
+                    else
+                    {
+                        @item.nroTraking
+                    }
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-link" data-toggle="modal" data-target="#lista" name="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                            <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                        </svg>
+                    </button>
+                </td>
+                <td>
+                    <a class="boton-link" asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                    <a class="boton-link" asp-action="Details" asp-route-id="@item.id">Detalles</a> |
+                    <a class="boton-link" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
+                </td>
+            </tr>
+            @*MODAL*@
+            <div id="lista" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Listado</h5><br />
+                            <ol>
+                                @{
+                                    List<int> nueva = new List<int>();
+                                    foreach (var p in ViewBag.comp)
+                                    {
+                                        if (item.id == p.idCarrito)
+                                        {
+                                            nueva.Add(p.idProducto);
+                                        }
+                                    }
+
+                                    foreach (var prod in ViewBag.prod)
+                                    {
+                                        foreach (var i in nueva)
+                                        {
+                                            if (i == prod.id)
+                                            {
+                                                <li><strong>Producto:</strong> @prod.nombre.ToUpper()</li>
+                                                <p><strong>Talle:</strong> @prod.talle</p><br />
+                                            }
+                                        }
+                                    }
+                                }
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </tbody>
 </table>
