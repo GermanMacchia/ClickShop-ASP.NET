@@ -14,7 +14,6 @@ namespace Seguimiento.Models
         [Required(ErrorMessage = "El cliente es un dato requerido")]
         public int clienteId  {get; set;}
 
-
         public int nroTraking {get; set;}
 
         [StringLength(300)]
@@ -28,12 +27,9 @@ namespace Seguimiento.Models
         [Required(ErrorMessage = "El Encargado del Pedido es un dato requerido")]
         public int empleadoId { get; set;}
 
-        [Required]
-        public List<Producto> productos { get; set;}
-
         public int direccionId { get; set;}
 
-        public Estado estado { get;}
+        public Estado estado { get; set; }
 
     }
 }

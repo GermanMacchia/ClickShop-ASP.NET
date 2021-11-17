@@ -12,6 +12,8 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
+            <input type="hidden" asp-for="empleadoId" />
+            <input type="hidden" asp-for="clienteId" />
             <div class="form-group">
                 <label asp-for="nroTraking" class="control-label"></label>
                 <input asp-for="nroTraking" class="form-control" />
@@ -35,11 +37,11 @@
             <div class="form-group">
                 <label asp-for="estado" class="control-label"></label>
                 <select asp-for="estado" class="form-control">
-                    <option value="0">PENDIENTE</option>
-                    <option value="1">PREPARADO / PAGADO </option>
-                    <option value="2">PREPARADO / ADEUDA </option>
-                    <option value="3">ENVIADO</option>
-                    <option value="4">RECIBIDO</option>
+                    <option value=0>PENDIENTE</option>
+                    <option value=1>PREPARADO / PAGADO </option>
+                    <option value=2>PREPARADO / ADEUDA </option>
+                    <option value=3>ENVIADO</option>
+                    <option value=4>RECIBIDO</option>
                 </select>
                 <span asp-validation-for="estado" class="text-danger"></span>
             </div>

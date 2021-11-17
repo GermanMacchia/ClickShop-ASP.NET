@@ -51,7 +51,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Crear([Bind("empleadoId, clienteId, productos, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
+        public async Task<ActionResult> Crear([Bind("empleadoId, clienteId, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +60,16 @@ namespace Seguimiento.Controllers
             }
 
             var lista = await _context.Carritos.ToListAsync();
+
+
+            foreach (var i in lista)
+            {
+                Compra c = new Compra(pedido.id, i.id );
+                _context.Compras.Add(c);
+                await _context.SaveChangesAsync();
+            }
+
+
             foreach (var i in lista)
             {
                 _context.Carritos.Remove(i);
@@ -105,7 +115,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("id, empleadoId, clienteId, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
         {
             if (id != pedido.id)
             {

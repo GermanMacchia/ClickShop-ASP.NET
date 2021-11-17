@@ -17,6 +17,7 @@ namespace Seguimiento.Models
         public DbSet<Pedido> Pedidos { get; set; }  
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Carrito> Carritos { get; set; }
+        public DbSet<Compra> Compras { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {

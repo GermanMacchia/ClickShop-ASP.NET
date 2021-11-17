@@ -10,7 +10,7 @@ using Seguimiento.Models;
 namespace Seguimiento.Migrations
 {
     [DbContext(typeof(SeguimientoContext))]
-    [Migration("20211110044010_initial")]
+    [Migration("20211117005131_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,6 +79,24 @@ namespace Seguimiento.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("Seguimiento.Models.Compra", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("idCarrito")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idProducto")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Compras");
                 });
 
             modelBuilder.Entity("Seguimiento.Models.Direccion", b =>
@@ -154,6 +172,9 @@ namespace Seguimiento.Migrations
                     b.Property<int>("empleadoId")
                         .HasColumnType("int");
 
+                    b.Property<int>("estado")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("fechaEnvio")
                         .HasColumnType("datetime2");
 
@@ -175,9 +196,6 @@ namespace Seguimiento.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Pedidoid")
-                        .HasColumnType("int");
-
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
 
@@ -197,21 +215,7 @@ namespace Seguimiento.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Pedidoid");
-
                     b.ToTable("Productos");
-                });
-
-            modelBuilder.Entity("Seguimiento.Models.Producto", b =>
-                {
-                    b.HasOne("Seguimiento.Models.Pedido", null)
-                        .WithMany("productos")
-                        .HasForeignKey("Pedidoid");
-                });
-
-            modelBuilder.Entity("Seguimiento.Models.Pedido", b =>
-                {
-                    b.Navigation("productos");
                 });
 #pragma warning restore 612, 618
         }

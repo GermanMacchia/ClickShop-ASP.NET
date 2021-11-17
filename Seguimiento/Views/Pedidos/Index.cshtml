@@ -26,6 +26,9 @@
             <th class="celdas">
                 @Html.DisplayNameFor(model => model.comentarios).ToUpper()
             </th>
+            <th class="celdas">
+                @Html.DisplayNameFor(model => model.nroTraking).ToUpper()
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -45,7 +48,7 @@
                     {
                         if (item.empleadoId == e.legajo)
                         {
-                            <p>@e.nombre @e.apellido</p> 
+                            <p>@e.nombre @e.apellido</p>
                         }
                     }
                 }
@@ -67,6 +70,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.comentarios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nroTraking)
             </td>
             <td>
                 <a class="boton-link" asp-action="Edit" asp-route-id="@item.id">Editar</a> |

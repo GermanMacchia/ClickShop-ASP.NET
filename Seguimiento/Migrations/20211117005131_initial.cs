@@ -42,6 +42,20 @@ namespace Seguimiento.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Compras",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    idCarrito = table.Column<int>(type: "int", nullable: false),
+                    idProducto = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compras", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Direcciones",
                 columns: table => new
                 {
@@ -84,7 +98,8 @@ namespace Seguimiento.Migrations
                     fechaEnvio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     empleadoId = table.Column<int>(type: "int", nullable: false),
-                    direccionId = table.Column<int>(type: "int", nullable: false)
+                    direccionId = table.Column<int>(type: "int", nullable: false),
+                    estado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,24 +116,12 @@ namespace Seguimiento.Migrations
                     precio = table.Column<double>(type: "float", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     talle = table.Column<int>(type: "int", nullable: false),
-                    imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Pedidoid = table.Column<int>(type: "int", nullable: true)
+                    imagen = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Productos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Productos_Pedidos_Pedidoid",
-                        column: x => x.Pedidoid,
-                        principalTable: "Pedidos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Productos_Pedidoid",
-                table: "Productos",
-                column: "Pedidoid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -130,16 +133,19 @@ namespace Seguimiento.Migrations
                 name: "Clientes");
 
             migrationBuilder.DropTable(
+                name: "Compras");
+
+            migrationBuilder.DropTable(
                 name: "Direcciones");
 
             migrationBuilder.DropTable(
                 name: "Empleados");
 
             migrationBuilder.DropTable(
-                name: "Productos");
+                name: "Pedidos");
 
             migrationBuilder.DropTable(
-                name: "Pedidos");
+                name: "Productos");
         }
     }
 }
