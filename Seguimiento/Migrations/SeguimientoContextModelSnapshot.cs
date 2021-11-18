@@ -39,6 +39,9 @@ namespace Seguimiento.Migrations
                     b.Property<int>("idTalle")
                         .HasColumnType("int");
 
+                    b.Property<double>("totalCompra")
+                        .HasColumnType("float");
+
                     b.HasKey("id");
 
                     b.ToTable("Carritos");
@@ -164,9 +167,6 @@ namespace Seguimiento.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("direccionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("empleadoId")
                         .HasColumnType("int");
 
@@ -181,6 +181,9 @@ namespace Seguimiento.Migrations
 
                     b.Property<int>("nroTraking")
                         .HasColumnType("int");
+
+                    b.Property<double>("totalCompra")
+                        .HasColumnType("float");
 
                     b.HasKey("id");
 

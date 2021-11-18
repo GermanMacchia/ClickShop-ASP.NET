@@ -16,7 +16,8 @@ namespace Seguimiento.Migrations
                     idProducto = table.Column<int>(type: "int", nullable: false),
                     idNombre = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     idTalle = table.Column<int>(type: "int", nullable: false),
-                    idPrecio = table.Column<double>(type: "float", nullable: false)
+                    idPrecio = table.Column<double>(type: "float", nullable: false),
+                    totalCompra = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,7 +99,7 @@ namespace Seguimiento.Migrations
                     fechaEnvio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     empleadoId = table.Column<int>(type: "int", nullable: false),
-                    direccionId = table.Column<int>(type: "int", nullable: false),
+                    totalCompra = table.Column<double>(type: "float", nullable: false),
                     estado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

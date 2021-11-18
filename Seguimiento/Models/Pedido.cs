@@ -27,7 +27,7 @@ namespace Seguimiento.Models
         [Required(ErrorMessage = "El Encargado del Pedido es un dato requerido")]
         public int empleadoId { get; set;}
 
-        public int direccionId { get; set;}
+        public double totalCompra { get; set; }
 
         public Estado estado { get; set; }
 

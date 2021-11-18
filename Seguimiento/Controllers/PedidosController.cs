@@ -55,7 +55,7 @@ namespace Seguimiento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Crear([Bind("empleadoId, clienteId, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
+        public async Task<ActionResult> Crear([Bind("totalCompra, empleadoId, clienteId, nroTraking,comentarios,fechaEnvio,fechaInicio,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {

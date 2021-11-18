@@ -10,7 +10,7 @@ using Seguimiento.Models;
 namespace Seguimiento.Migrations
 {
     [DbContext(typeof(SeguimientoContext))]
-    [Migration("20211117005131_initial")]
+    [Migration("20211118034122_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace Seguimiento.Migrations
 
                     b.Property<int>("idTalle")
                         .HasColumnType("int");
+
+                    b.Property<double>("totalCompra")
+                        .HasColumnType("float");
 
                     b.HasKey("id");
 
@@ -166,9 +169,6 @@ namespace Seguimiento.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("direccionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("empleadoId")
                         .HasColumnType("int");
 
@@ -183,6 +183,9 @@ namespace Seguimiento.Migrations
 
                     b.Property<int>("nroTraking")
                         .HasColumnType("int");
+
+                    b.Property<double>("totalCompra")
+                        .HasColumnType("float");
 
                     b.HasKey("id");
 

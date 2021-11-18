@@ -20,5 +20,8 @@ namespace Seguimiento.Models
         public int idTalle { get; set; }
 
         public double idPrecio { get; set; }
+
+        public double totalCompra { get; set; }
+        
     }
 }

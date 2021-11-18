@@ -30,7 +30,10 @@
                 @Html.DisplayNameFor(model => model.nroTraking).ToUpper()
             </th>
             <th>
-
+                @*LISTA*@
+            </th>
+            <th>
+                @*CLIENTE*@
             </th>
         </tr>
     </thead>
@@ -62,7 +65,7 @@
                                 break;
                             default:
                                 <p>SIN ESTADO</p>
-                                    break;
+                                break;
                         }
                     }
                 </td>
@@ -81,7 +84,7 @@
                 <td>
                     @if (item.fechaEnvio == DateTime.MinValue)
                     {
-                    <p style="color: orangered; font-weight: bold;">SIN ASIGNAR</p>
+                        <p style="color: orangered; font-weight: bold;">SIN ASIGNAR</p>
                     }
                     else
                     {
@@ -115,27 +118,34 @@
                 </td>
                 <td>
                     <button type="submit" class="btn btn-link" data-toggle="modal" data-target="#lista" name="boton">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-card-checklist" viewBox="0 0 16 16">
                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
                             <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
                         </svg>
                     </button>
                 </td>
                 <td>
-                    <a class="boton-link" asp-action="Edit" asp-route-id="@item.id">Editar</a> |
-                    <a class="boton-link" asp-action="Details" asp-route-id="@item.id">Detalles</a> |
+                    <button type="submit" class="btn btn-link" data-toggle="modal" data-target="#cli" name="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                            <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        </svg>
+                    </button>
+                </td>
+                <td>
+                    <a class="boton-link" asp-action="Edit" asp-route-id="@item.id">Editar</a> ---
                     <a class="boton-link" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
                 </td>
             </tr>
             @*MODAL*@
-            <div id="lista" class="modal fade" role="dialog">
+            <div id="lista" data-id="@item.id" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <h5>Listado</h5><br />
+                            <h4>Lista Productos</h4><br />
                             <ol>
                                 @{
                                     List<int> nueva = new List<int>();
@@ -154,16 +164,30 @@
                                             if (i == prod.id)
                                             {
                                                 <li><strong>Producto:</strong> @prod.nombre.ToUpper()</li>
-                                                <p><strong>Talle:</strong> @prod.talle</p><br />
+                                                <p><strong>Talle:</strong> @prod.talle</p>
+                                                <br />
                                             }
                                         }
                                     }
                                 }
                             </ol>
+                            <h5>Total: $@item.totalCompra</h5>
                         </div>
                     </div>
                 </div>
             </div>
         }
+        <div id="cli" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h1>datos cliente</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
     </tbody>
 </table>

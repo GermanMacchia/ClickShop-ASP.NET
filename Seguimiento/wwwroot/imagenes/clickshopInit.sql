@@ -1,8 +1,8 @@
-Delete from Carritos
-Delete from Productos
-Delete from Empleados
-Delete from Direcciones
-Delete from Clientes
+TRUNCATE TABLE  Carritos
+TRUNCATE TABLE  Productos
+TRUNCATE TABLE  Empleados
+TRUNCATE TABLE  Direcciones
+TRUNCATE TABLE Clientes
 
 INSERT INTO Productos(nombre, precio, cantidad, talle, imagen)
 VALUES ('Buzo Negro Hoodie', 9999, 11, 2, './imagenes/Buzo.jpg'); 

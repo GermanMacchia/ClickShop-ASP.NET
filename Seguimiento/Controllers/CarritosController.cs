@@ -24,9 +24,12 @@ namespace Seguimiento.Controllers
             var empleados = await _context.Empleados.ToListAsync();
             var clientes = await _context.Clientes.ToListAsync();
             var listado = await _context.Carritos.ToListAsync();
+            if(listado.Count() != 0)
+            {
+                ViewBag.total = listado[listado.Count() - 1].totalCompra;
+            }
             ViewBag.emp = empleados;
             ViewBag.cli = clientes;
-            ViewBag.prod = listado;
             return View(await _context.Carritos.ToListAsync());
         }
 
@@ -51,7 +54,7 @@ namespace Seguimiento.Controllers
         //ACTION CUSTOM, EJECUTA Y LLAMA A INDEX DE HOME
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Crear([Bind("id, idProducto, idNombre, idPrecio, idTalle")] Carrito carrito)
+        public async Task<ActionResult> Crear([Bind("id, idProducto, idNombre, idPrecio, idTalle, totalCompra")] Carrito carrito)
         {
             if (ModelState.IsValid)
             {
