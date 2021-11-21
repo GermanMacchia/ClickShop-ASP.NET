@@ -25,10 +25,14 @@ namespace Seguimiento.Controllers
             var clientes = await _context.Clientes.ToListAsync();
             var productos = await _context.Productos.ToListAsync();
             var compra = await _context.Compras.ToListAsync();
+            var direccion = await _context.Direcciones.ToListAsync();
             ViewBag.emp = empleados;
             ViewBag.cli = clientes;
             ViewBag.prod = productos;
             ViewBag.comp = compra;
+            ViewBag.dir = direccion;
+            ViewBag.idLista = "idLista";
+            ViewBag.idCliente = "idCliente";
             return View(await _context.Pedidos.ToListAsync());
         }
 
