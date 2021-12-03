@@ -14,28 +14,29 @@
             <input type="hidden" asp-for="id" />
             <input type="hidden" asp-for="empleadoId" />
             <input type="hidden" asp-for="clienteId" />
+            <input type="hidden" asp-for="totalCompra" />
             <div class="form-group">
-                <label asp-for="nroTraking" class="control-label"></label>
+                <label asp-for="nroTraking" class="control-label">NRO TRACKING</label>
                 <input asp-for="nroTraking" class="form-control" />
                 <span asp-validation-for="nroTraking" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="comentarios" class="control-label"></label>
+                <label asp-for="comentarios" class="control-label">COMENTARIOS</label>
                 <textarea asp-for="comentarios" class="form-control"> </textarea>
                 <span asp-validation-for="comentarios" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaEnvio" class="control-label"></label>
+                <label asp-for="fechaEnvio" class="control-label">FECHA DE ENVIO</label>
                 <input asp-for="fechaEnvio" class="form-control" />
                 <span asp-validation-for="fechaEnvio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaInicio" class="control-label"></label>
+                <label asp-for="fechaInicio" class="control-label">FECHA DE INICIO</label>
                 <input asp-for="fechaInicio" class="form-control" />
                 <span asp-validation-for="fechaInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="estado" class="control-label"></label>
+                <label asp-for="estado" class="control-label">ESTADO</label>
                 <select asp-for="estado" class="form-control">
                     <option value=0>PENDIENTE</option>
                     <option value=2>PREPARADO / ADEUDA </option>
