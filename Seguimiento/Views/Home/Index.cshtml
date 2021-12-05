@@ -113,55 +113,67 @@
                             <th class="celdas" style="border-top: none;">
                                 @Html.DisplayNameFor(model => model.talle).ToUpper()
                             </th>
+                            <th class="celdas" style="border-top: none;">
+                                @Html.DisplayNameFor(model => model.cantidad).ToUpper()
+                            </th>
                             <th style="border-top: none;">
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                   @foreach (var item in Model)
-                   {
-                        <tr>
-                            <td>
-                                <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.nombre)
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.precio)
-                            </td>
-                            <td class="align-middle">
-                                @Html.DisplayFor(modelItem => item.talle)
-                            </td>
-                           @{ 
-                               double precio;
-                               if (ViewBag.tot == 0)
-                               {
-                                   precio = item.precio;
-                               }
-                               else
-                               {
-                                   precio = ViewBag.tot + item.precio;
-                               }
-                               using (Html.BeginForm("Crear", "Carritos"))
-                               {
-                            <td class="align-middle">
-                                <input type="hidden" name="idProducto" value=@item.id />
-                                <input type="hidden" name="idNombre" value="@item.nombre" />
-                                <input type="hidden" name="idPrecio" value=@item.precio />
-                                <input type="hidden" name="idTalle" value=@item.talle />
-                                <input type="hidden" name="totalCompra" value=@precio />
-                            <button type="submit" class="btn btn-link" name="boton">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                                </svg>
-                            </button>
-                            </td>
+                        @foreach (var item in Model)
+                        {
+                            @if (item.cantidad > 0)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <img style="width: 7rem; height:auto;" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.imagen)" alt="img" />
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.nombre)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.precio)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.talle)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.cantidad)
+                                    </td>
+                                    
+                                    @{
+                                        double precio;
+                                        if (ViewBag.tot == 0)
+                                        {
+                                            precio = item.precio;
+                                        }
+                                        else
+                                        {
+                                            precio = ViewBag.tot + item.precio;
+                                        }
+                                        using (Html.BeginForm("Crear", "Carritos"))
+                                        {
+                                            <td class="align-middle">
+                                                <input type="hidden" name="idProducto" value=@item.id />
+                                                <input type="hidden" name="idNombre" value="@item.nombre" />
+                                                <input type="hidden" name="idPrecio" value=@item.precio />
+                                                <input type="hidden" name="idTalle" value=@item.talle />
+                                                <input type="hidden" name="totalCompra" value=@precio />
+                                                <button type="submit" class="btn btn-link" name="boton">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        }
+                                    }
+                                </tr>
+
                                 }
-                            }
-                        </tr>                     
-                    }
-                    </tbody>
+                                        }
+                        </tbody>
                 </table>
             </div>
         </div>
