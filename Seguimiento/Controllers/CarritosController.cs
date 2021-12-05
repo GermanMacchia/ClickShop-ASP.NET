@@ -59,6 +59,11 @@ namespace Seguimiento.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(carrito);
+                int id = carrito.idProducto;
+
+                var prod = await _context.Productos.FindAsync(id);
+                prod.cantidad = prod.cantidad - 1;
+                _context.Update(prod);
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction("Index", "Home", null);
@@ -138,6 +143,7 @@ namespace Seguimiento.Controllers
 
             var carrito = await _context.Carritos
                 .FirstOrDefaultAsync(m => m.id == id);
+
             if (carrito == null)
             {
                 return NotFound();
@@ -152,7 +158,20 @@ namespace Seguimiento.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             var carrito = await _context.Carritos.FindAsync(id);
+
+            int idNuevo = carrito.idProducto;
+
+            var prod = await _context.Productos.FindAsync(idNuevo);
+            
+            if (prod!= null)
+            
+            {
+                prod.cantidad = prod.cantidad + 1;
+                _context.Update(prod);
+            }
+
             _context.Carritos.Remove(carrito);
+
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home", null);
         }

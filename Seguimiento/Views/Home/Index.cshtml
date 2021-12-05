@@ -14,13 +14,17 @@
         @*CARRITO*@
             <div class="col-lg-4">
                 <div>
-                    <div class="d-flex flex-row bd-highlight mb-3" style="border-bottom: solid 2px; border-color: lightgrey">
-                        <div class="p-2 bd-highlight">
-                            <h4 class="celdas" >Carrito</h4>
+                        <div class="d-flex flex-row bd-highlight mb-3" style="border-bottom: solid 2px; border-color: lightgrey">
+                            <div class="p-2 bd-highlight">
+                                <h4 class="celdas">Carrito</h4>
+                                
+
+                            </div>
                         </div>
-                    </div>
+                    
+
                     <table>
-                    @*ACA DESPLIEGUE*@
+                        @*ACA DESPLIEGUE*@
                         <tbody>
                             @if (ViewBag.carr != null)
                             {
@@ -50,7 +54,7 @@
                                     }
                                 }
                             }
-                                </tbody>
+                        </tbody>
                         <tfoot>
                             <tr>
                                 <td>
@@ -93,8 +97,9 @@
                                 </td>
                             </tr>
                         </tfoot>
-                        </table>
-                    </div>
+                    </table>
+
+                </div>
             </div>
             @*TABLA*@
             <div class="col-sm-8">
@@ -123,8 +128,8 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            @if (item.cantidad > 0)
                             {
+                                {
                                 <tr>
 
                                     <td>
@@ -142,7 +147,7 @@
                                     <td class="align-middle">
                                         @Html.DisplayFor(modelItem => item.cantidad)
                                     </td>
-                                    
+
                                     @{
                                         double precio;
                                         if (ViewBag.tot == 0)
@@ -161,19 +166,24 @@
                                                 <input type="hidden" name="idPrecio" value=@item.precio />
                                                 <input type="hidden" name="idTalle" value=@item.talle />
                                                 <input type="hidden" name="totalCompra" value=@precio />
+
+                                                @if (item.cantidad > 0)
+                                                {
                                                 <button type="submit" class="btn btn-link" name="boton">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                                                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
                                                     </svg>
                                                 </button>
+                                                }
                                             </td>
                                         }
                                     }
                                 </tr>
 
                                 }
-                                        }
-                        </tbody>
+                            }
+                         }
+                    </tbody>
                 </table>
             </div>
         </div>
