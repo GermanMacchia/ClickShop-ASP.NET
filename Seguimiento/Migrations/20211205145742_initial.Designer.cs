@@ -10,7 +10,7 @@ using Seguimiento.Models;
 namespace Seguimiento.Migrations
 {
     [DbContext(typeof(SeguimientoContext))]
-    [Migration("20211118034122_initial")]
+    [Migration("20211205145742_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -75,6 +75,11 @@ namespace Seguimiento.Controllers
 
             foreach (var i in lista)
             {
+                int id = i.idProducto;
+                var prod = await _context.Productos.FindAsync(id);
+                prod.cantidad = prod.cantidad - 1;
+                _context.Update(prod);
+
                 Compra c = new Compra(pedido.id, i.idProducto);
                 _context.Compras.Add(c);
                 await _context.SaveChangesAsync();
