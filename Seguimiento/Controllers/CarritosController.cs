@@ -74,8 +74,21 @@ namespace Seguimiento.Controllers
         public async Task<ActionResult> DeleteAll()
         {
             var lista = await _context.Carritos.ToListAsync();
-            foreach(var i in lista)
+
+
+            foreach (var i in lista)
             {
+                var carrito = await _context.Carritos.FindAsync(i.id);
+                int id = carrito.idProducto;
+                var prod = await _context.Productos.FindAsync(id);
+
+                if (prod != null)
+
+                {
+                    prod.cantidad = prod.cantidad + 1;
+                    _context.Update(prod);
+                }
+
                 _context.Carritos.Remove(i);
                 await _context.SaveChangesAsync();
             }
