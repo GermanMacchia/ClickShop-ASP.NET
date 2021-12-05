@@ -59,6 +59,11 @@ namespace Seguimiento.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(carrito);
+                int id = carrito.idProducto;
+
+                var prod = await _context.Productos.FindAsync(id);
+                prod.cantidad = prod.cantidad - 1;
+                _context.Update(prod);
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction("Index", "Home", null);
