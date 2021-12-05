@@ -19,7 +19,9 @@ namespace Seguimiento.Models
         [RegularExpression(@"[0-9]{4}", ErrorMessage = "Poner un precio válido para el producto")]
         public double precio { get; set; }
 
+       
         [Required(ErrorMessage = "La cantidad es un dato requerido")]
+        [[Range(0, 1000)]
         public int cantidad { get; set; }
 
         [Required(ErrorMessage = "El talle es un dato requerido")]
